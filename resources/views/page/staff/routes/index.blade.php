@@ -172,7 +172,7 @@
 
         <form action="{{route('staff-dashboard-se')}}" method="get"  >
             <div class="row">
-                <div class="col-1">
+                <div class="col-2">
 
 
                     <div class="form-group">
