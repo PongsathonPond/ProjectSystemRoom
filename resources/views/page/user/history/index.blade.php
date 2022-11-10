@@ -89,13 +89,13 @@
             <li class="nav-item">
                 <a class="nav-link mb-0 px-0 py-1 active" id="tabs-icons-text-1-tab" data-bs-toggle="tab"
                    href="#tabs-icons-text-1" role="tab" aria-controls="preview" aria-selected="true">
-                    <i class="ni ni-badge text-sm me-2"></i> ผู้ดูแลระบบ
+                    <i class="ni ni-badge text-sm me-2"></i> การขอใช้
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mb-0 px-0 py-1" id="tabs-icons-text-2-tab" data-bs-toggle="tab"
                    href="#tabs-icons-text-2" role="tab" aria-controls="code" aria-selected="false">
-                    <i class="ni ni-laptop text-sm me-2"></i> ผู้ใช้ภายนอก
+                    <i class="ni ni-laptop text-sm me-2"></i> การใช้
                 </a>
             </li>
 

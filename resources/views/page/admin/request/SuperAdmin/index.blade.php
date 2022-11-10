@@ -378,7 +378,7 @@
 
                                         </div>
                                         <input type="text" class="form-control" name="email"
-                                               value=@foreach ($item->booktouser as $item1)
+                                               disabled value=@foreach ($item->booktouser as $item1)
                                             {{ $item1->email }}
                                                 @endforeach
                                         @foreach ($item->booktoadmin as $item2)

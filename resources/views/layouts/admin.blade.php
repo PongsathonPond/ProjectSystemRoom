@@ -173,27 +173,27 @@
 
 
 
-                @if (request()->routeIs('history_index') || request()->routeIs('history_req'))
-                    <li class="nav-item">
-                        <a class="nav-link bg-primary active" href="{{ route('history_index') }}">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-book-medical text-white text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text  text-white ms-1">ประวัติการขอ/การใช้</span>
-                        </a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{ route('history_index') }}">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-book-medical text-primary text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">ประวัติการขอ/การใช้</span>
-                        </a>
-                    </li>
-                @endif
+{{--                @if (request()->routeIs('history_index') || request()->routeIs('history_req'))--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link bg-primary active" href="{{ route('history_index') }}">--}}
+{{--                            <div--}}
+{{--                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                                <i class="fas fa-book-medical text-white text-sm opacity-10"></i>--}}
+{{--                            </div>--}}
+{{--                            <span class="nav-link-text  text-white ms-1">ประวัติการขอ/การใช้</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @else--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link " href="{{ route('history_index') }}">--}}
+{{--                            <div--}}
+{{--                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                                <i class="fas fa-book-medical text-primary text-sm opacity-10"></i>--}}
+{{--                            </div>--}}
+{{--                            <span class="nav-link-text ms-1">ประวัติการขอ/การใช้</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
 
                 @if (request()->routeIs('user-manage'))
