@@ -136,10 +136,11 @@
 
                                             @if ($item->status == 1)
                                                 <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
-                                                    onclick="testdelete();"> </a>
+                                                   onclick="return alert('ไม่สามารถลบข้อมูลได้')"> </a>
                                             @else
-                                                <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
-                                                    onclick="return confirm('ยกเลิกการจอง ?')"> </a>
+                                                <a href="{{ url('/request/delete/' . $item->id) }}"
+                                                   class="fas fa-trash-alt fa-lg btn btn-danger"
+                                                   onclick="return confirm('ลบหรือไม่ ?')"> </a>
                                             @endif
                                             <!-- Modal -->
                                             <!-- ModalReq -->
