@@ -15,6 +15,22 @@ class HistoryAdmin extends Controller
         return view('page.admin.history.index', compact('dataOld', 'dataNew'));
     }
 
+    public function indexuser(Request $request)
+    {
+        $dataOld = BookingList::Where('user_id', session('id'))->Where('status','!=',1)->paginate(10);
+        $dataNew = BookingList::Where('user_id', session('id'))->Where('status', '1')->paginate(10);
+        return view('page.user.history.index', compact('dataOld', 'dataNew'));
+    }
+
+
+    public function indexadmin(Request $request)
+    {
+
+        $dataOld = BookingList::Where('admin_id', session('id'))->Where('status','!=',1)->paginate(10);
+        $dataNew = BookingList::Where('admin_id', session('id'))->Where('status', '1')->paginate(10);
+        return view('page.admin.history.indexadmin', compact('dataOld', 'dataNew'));
+    }
+
     public function index2(Request $request)
     {
 

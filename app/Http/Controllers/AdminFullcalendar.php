@@ -28,5 +28,25 @@ class AdminFullcalendar extends Controller
         return view('page.admin.calendar.findlocation', compact('find', 'location'));
     }
 
+
+    public function indexstaff()
+    {
+
+        $location = location::all();
+        $booking = BookingList::all();
+        return view('page.staff.calendar.index', compact('location', 'booking'));
+
+    }
+
+
+
+    public function editstaff($location_id)
+    {
+        $find = Location::find($location_id);
+        $location = location::all();
+
+        return view('page.staff.calendar.findlocation', compact('find', 'location'));
+    }
+
    
 }

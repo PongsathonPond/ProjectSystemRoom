@@ -27,7 +27,7 @@
                         icon: 'success',
                         title: 'ลบข้อมูลเรียบร้อย',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 5000
                     })
                 </script>
             @endif
@@ -57,221 +57,214 @@
                         <table class="align-items-center mb-0 table">
 
                             <thead>
-                                <tr>
-                                    <th class="text-uppercase font-weight-bolder  text-center text-xs">
-                                        ลำดับ
-                                    </th>
-                                    <th class="text-uppercase font-weight-bolder text-center text-xs">
-                                        ชื่อรายการ</th>
-                                    <th class="text-uppercase font-weight-bolder text-center text-xs">
-                                        ชื่อสถานที่</th>
-                                    <th class="text-uppercase font-weight-bolder text-center text-xs">
-                                        วันที่ทำรายการจอง</th>
-                                    <th class="text-uppercase font-weight-bolder text-center text-xs">สถานะการจอง </th>
-                                    <th class="text-uppercase font-weight-bolder text-center text-xs">จัดการ
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th class="text-uppercase font-weight-bolder  text-center text-xs">
+                                    ลำดับ
+                                </th>
+                                <th class="text-uppercase font-weight-bolder text-center text-xs">
+                                    ชื่อรายการ
+                                </th>
+                                <th class="text-uppercase font-weight-bolder text-center text-xs">
+                                    ชื่อสถานที่
+                                </th>
+                                <th class="text-uppercase font-weight-bolder text-center text-xs">
+                                    วันที่ทำรายการจอง
+                                </th>
+                                <th class="text-uppercase font-weight-bolder text-center text-xs">สถานะการจอง</th>
+                                <th class="text-uppercase font-weight-bolder text-center text-xs">จัดการ
+                                </th>
+                            </tr>
 
                             </thead>
 
                             <tbody>
 
-                                @foreach ($booking as $item)
-                                    <tr>
-                                        <td class="text-center align-middle">
-                                            {{ $booking->firstItem() + $loop->index }}
-                                        </td>
+                            @foreach ($booking as $item)
+                                <tr>
+                                    <td class="text-center align-middle">
+                                        {{ $booking->firstItem() + $loop->index }}
+                                    </td>
 
 
-                                        <td class="text-center align-middle">
-                                            {{ $item->project_name }}
-                                        </td>
+                                    <td class="text-center align-middle">
+                                        {{ $item->project_name }}
+                                    </td>
 
-                                        <td class="text-center align-middle">
-                                            @foreach ($item->booktolocation as $item1)
-                                                {{ $item1->location_name }}
-                                            @endforeach
-                                        </td>
+                                    <td class="text-center align-middle">
+                                        @foreach ($item->booktolocation as $item1)
+                                            {{ $item1->location_name }}
+                                        @endforeach
+                                    </td>
 
-                                        <td class="text-center align-middle">
-                                            {{ show_date($item->created_at) }}
-
-
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            @if ($item->status == 0)
-                                                <span class="badge bg-secondary">รอการอนุมัติ</span>
-                                            @elseif($item->status == 1)
-                                                <span class="badge bg-success">อนุมัติเรียบร้อย</span>
-                                            @else
-                                                <span class="badge bg-danger">ไม่อนุมัติ</span>
-                                            @endif
-                                        </td>
+                                    <td class="text-center align-middle">
+                                        {{ show_date($item->created_at) }}
 
 
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        @if ($item->status == 0)
+                                            <span class="badge bg-secondary">รอการอนุมัติ</span>
+                                        @elseif($item->status == 1)
+                                            <span class="badge bg-success">อนุมัติเรียบร้อย</span>
+                                        @else
+                                            <span class="badge bg-danger">ไม่อนุมัติ</span>
+                                        @endif
+                                    </td>
 
-                                        <td class="text-center align-middle">
 
-                                            <a href="{{ url('/request/detail/' . $item->id) }}"
-                                                class="btn btn-secondary fas fa-eye" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="รายละเอียดการจอง" data-container="body"
-                                                data-animation="true">
-                                            </a>
+                                    <td class="text-center align-middle">
+
+                                        <a href="{{ url('/request/detail/' . $item->id) }}"
+                                           class="btn btn-secondary fas fa-eye" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="รายละเอียดการจอง" data-container="body"
+                                           data-animation="true">
+                                        </a>
 
 
+                                        <!-- Button trigger modal -->
 
-                                            <!-- Button trigger modal -->
-
-                                            @if ($item->status == 1)
-                                                <button type="button" class="fas fa-edit fa-lg btn btn-primary"
+                                        @if ($item->status == 1)
+                                            <button type="button" class="fas fa-edit fa-lg btn btn-primary"
                                                     data-bs-toggle="modal" id="test"
                                                     data-bs-target="#TestReq{{ $item->id }}" disabled>
 
-                                                </button>
-                                            @else
-                                                <button type="button" class="fas fa-edit fa-lg btn btn-primary"
+                                            </button>
+                                        @else
+                                            <button type="button" class="fas fa-edit fa-lg btn btn-primary"
                                                     data-bs-toggle="modal" id="test"
                                                     data-bs-target="#TestReq{{ $item->id }}">
 
-                                                </button>
-                                            @endif
+                                            </button>
+                                        @endif
 
 
-                                            @if ($item->status == 1)
-                                                <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
-                                                    onclick="testdelete();"> </a>
-                                            @else
-                                                <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
-                                                    onclick="return confirm('ยกเลิกการจอง ?')"> </a>
-                                            @endif
-                                            <!-- Modal -->
-                                            <!-- ModalReq -->
-                                            <div class="modal fade" id="TestReq{{ $item->id }}" tabindex="-1"
-                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                                แก้ไขรายละเอียดการจอง</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        @if ($item->status == 1)
+                                            <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
+                                               onclick="return alert('ไม่สามารถลบข้อมูลได้')"> </a>
+                                        @else
+                                            <a href="{{ url('/request/delete/' . $item->id) }}"
+                                               class="fas fa-trash-alt fa-lg btn btn-danger"
+                                               onclick="return confirm('ลบหรือไม่ ?')"> </a>
+                                        @endif
+                                        <!-- Modal -->
+                                        <!-- ModalReq -->
+                                        <div class="modal fade" id="TestReq{{ $item->id }}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            แก้ไขรายละเอียดการจอง</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="{{ url('/request/updatereq/' . $item->id) }}"
-                                                                method="post">
-                                                                @csrf
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ url('/request/updatereq/' . $item->id) }}"
+                                                              method="post">
+                                                            @csrf
 
-                                                                <div class="row" style="text-align: left">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="form-group">
-                                                                            <label class="form-control-label"
-                                                                                for="location_id">ห้อง
-                                                                            </label>
-                                                                            <select type="text " class="form-control "
+                                                            <div class="row" style="text-align: left">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label"
+                                                                               for="location_id">ห้อง
+                                                                        </label>
+                                                                        <select type="text " class="form-control "
                                                                                 name="location_id">
 
-                                                                                <option value="{{ $item->location_id }}">
-                                                                                    เลือกประเภท</option>
+                                                                            <option value="{{ $item->location_id }}">
+                                                                                เลือกประเภท
+                                                                            </option>
 
-                                                                                @foreach ($location as $item1)
-                                                                                    <option
+                                                                            @foreach ($location as $item1)
+                                                                                <option
                                                                                         value="{{ $item1->location_id }}">
-                                                                                        {{ $item1->location_name }}
-                                                                                    </option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
+                                                                                    {{ $item1->location_name }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
+                                                                </div>
 
-                                                                    <div class=" col-lg-5">
-                                                                        <div class="form-group">
-                                                                            <label class="form-control-label"
-                                                                                for="project_name">ชื่อรายการจอง
-                                                                            </label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="project_name"
-                                                                                value="{{ $item->project_name }}">
-                                                                            </select>
-                                                                        </div>
+                                                                <div class=" col-lg-5">
+                                                                    <div class="form-group">
+                                                                        <label class="form-control-label"
+                                                                               for="project_name">ชื่อรายการจอง
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               name="project_name"
+                                                                               value="{{ $item->project_name }}">
+                                                                        </select>
                                                                     </div>
+                                                                </div>
 
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="example-datetime-local-input"
-                                                                                class="form-control-label">เวลาเริ่มต้น</label>
-                                                                            <input class="form-control"
-                                                                                type="datetime-local" name="start"
-                                                                                value="{{ $item->start }}"
-                                                                                id="example-datetime-local-input">
-                                                                        </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="example-datetime-local-input"
+                                                                               class="form-control-label">เวลาเริ่มต้น</label>
+                                                                        <input class="form-control"
+                                                                               type="datetime-local" name="start"
+                                                                               value="{{ $item->start }}"
+                                                                               id="example-datetime-local-input">
                                                                     </div>
+                                                                </div>
 
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="example-datetime-local-input"
-                                                                                class="form-control-label">เวลาสิ้นสุด</label>
-                                                                            <input class="form-control"
-                                                                                type="datetime-local" name="end"
-                                                                                value="{{ $item->end }}"
-                                                                                id="example-datetime-local-input">
-                                                                        </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="example-datetime-local-input"
+                                                                               class="form-control-label">เวลาสิ้นสุด</label>
+                                                                        <input class="form-control"
+                                                                               type="datetime-local" name="end"
+                                                                               value="{{ $item->end }}"
+                                                                               id="example-datetime-local-input">
                                                                     </div>
-
-
-
-
-
-
-
-
-
-
                                                                 </div>
 
 
+                                                            </div>
 
-                                                                @error('name')
-                                                                    <div class="my-2">
+
+                                                            @error('name')
+                                                            <div class="my-2">
                                                                         <span class="text-danger my-2">
                                                                             {{ $message }}
                                                                         </span>
-                                                                    </div>
-                                                                @enderror
+                                                            </div>
+                                                            @enderror
 
-                                                                @error('email')
-                                                                    <div class="my-2">
+                                                            @error('email')
+                                                            <div class="my-2">
                                                                         <span class="text-danger my-2">
                                                                             {{ $message }}
                                                                         </span>
-                                                                    </div>
-                                                                @enderror
-                                                                <div class="ss">
-                                                                    <button type="submit"
-                                                                        class="btn bg-gradient-primary">บันทึก</button>
-                                                                    <button type="button"
+                                                            </div>
+                                                            @enderror
+                                                            <div class="ss">
+                                                                <button type="submit"
+                                                                        class="btn bg-gradient-primary">บันทึก
+                                                                </button>
+                                                                <button type="button"
                                                                         class="btn bg-gradient-secondary"
-                                                                        data-bs-dismiss="modal">ปิด</button>
+                                                                        data-bs-dismiss="modal">ปิด
+                                                                </button>
 
-                                                                </div>
-                                                        </div>
-
-
-
-
-                                                        </form>
-
+                                                            </div>
                                                     </div>
 
+
+                                                    </form>
+
                                                 </div>
+
                                             </div>
+                                        </div>
                     </div>
 
                     <!-- EndModalReq -->
 
                 </div>
-
 
 
                 </td>
@@ -295,6 +288,10 @@
 
 
     </div>
+
+@endsection
+
+@push('js')
     <script>
         function testdelete() {
             Swal.fire({
@@ -302,12 +299,12 @@
                 icon: 'error',
                 title: 'ไม่สามารถลบข้อมูลได้',
                 showConfirmButton: true,
-
+                timer: 5000
             })
         }
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#myTable').DataTable({
                 paging: false,
                 ordering: false,
@@ -324,8 +321,8 @@
             });
         });
 
-        $(document).ready(function() {
-            $('.step').each(function(index, element) {
+        $(document).ready(function () {
+            $('.step').each(function (index, element) {
                 // element == this
                 $(element).not('.active').addClass('done');
                 $('.done').html('<i class="fas fa-check"></i>');
@@ -335,4 +332,4 @@
             });
         });
     </script>
-@endsection
+@endpush

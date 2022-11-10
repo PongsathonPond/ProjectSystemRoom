@@ -49,9 +49,7 @@
             data-bs-target="#STAFF">
 
     </button>
-    @php
-        $test =array();
-    @endphp
+
             <!-- Modal -->
     <div class="modal fade" id="STAFF" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -215,6 +213,9 @@
                                                                                             </thead>
                                                                                             <tbody>
 
+                                                                                            @php
+                                                                                                $test =array();
+                                                                                            @endphp
 
                                                                                             @foreach ($atten as $item)
                                                                                                 @if ($row->id == $item->staff_id)
@@ -252,6 +253,7 @@
 
                                                                                             </tbody>
                                                                                         </table>
+
 
                                                                                     </div>
                                                                                 </div>

@@ -1,4 +1,5 @@
 @extends('layouts.staff')
+<script src="/../assets/js/plugins/chartjs.min.js" type="text/javascript"></script>
 
 @section('contentstaff')
     <div class="row">
@@ -166,7 +167,358 @@
             </div>
         </div>
     </div>
+    <div class="containner" style="margin-top:4%">
 
+
+        <form action="{{route('staff-dashboard-se')}}" method="get"  >
+            <div class="row">
+                <div class="col-1">
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">ค้นหาการขอ/การใช้</label>
+
+                        @if($path == "2")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="2" >การขอใช้</option>
+                                <option value="1" >การใช้</option>
+                                <option value="0" >ทั้งหมด</option>
+
+                            </select>
+                        @elseif($path == "1")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="1" >การใช้</option>
+                                <option value="2" >การขอใช้</option>
+                                <option value="0" >ทั้งหมด</option>
+                            </select>
+                        @elseif($path == "0")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="0" >ทั้งหมด</option>
+                                <option value="1" >การใช้</option>
+                                <option value="2" >การขอใช้</option>
+                            </select>
+                        @endif
+
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+    </div>
+
+
+    <div class="cotainer-fluid py-4">
+
+
+
+
+
+        <body>
+
+
+
+        <div class="ct-docs-main-container">
+            <div class="ct-docs-main-content-row">
+                <div class="ct-docs-sidebar-col">
+
+                    <div class="ct-docs-toc-col">
+
+                    </div>
+                    <main class="ct-docs-content-col" role="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="card mb-3">
+                            <div class="card-header"> <h5>รายงานจำนวนการใช้งานแบ่งตามประเภท</h5></div>
+                            <div class="card-body p-3">
+
+                                <div class="chart">
+                                    <canvas id="bar-chart" class="chart-canvas" height="300px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="card mb-3">
+                                    <div class="card-header"> <h5>ห้องที่ใช้มากที่สุด 5 อันดับแรก</h5></div>
+                                    <div class="card-body p-3">
+                                        <div class="chart">
+                                            <canvas id="doughnut-chart" class="chart-canvas" height="300px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="card mb-3">
+                                    <div class="card-header"> <h5>รายงานรายได้แบ่งตามประเภท</h5></div>
+                                    <div class="card-body p-3">
+
+                                        <div class="chart">
+                                            <canvas id="pie-chart" class="chart-canvas" height="300px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-relative">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div class="ct-docs-main-footer-row">
+                    <div class="ct-docs-main-footer-blank-col"></div>
+                    <div class="ct-docs-main-footer-col">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <script type="text/javascript">
+                // Line chart
+                // Line chart with gradient
+                // Doughnut chart
+                var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
+
+                new Chart(ctx3, {
+                    type: "doughnut",
+                    data: {
+                        labels: {!!json_encode($namelocation)!!},
+                        datasets: [{
+                            label: "Projects",
+                            weight: 9,
+                            cutout: 60,
+                            tension: 0.9,
+                            pointRadius: 2,
+                            borderWidth: 2,
+                            backgroundColor: [
+                                "#8D5EE4",
+                                "#5EB5E4",
+                                "#E48D5E",
+                                "#B5E45E",
+                                "#E4D05E"
+                            ],
+                            data: {!!json_encode($arrsum)!!},
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: "index"
+                        },
+                        scales: {
+                            y: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawTicks: false
+                                },
+                                ticks: {
+                                    display: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawTicks: false
+                                },
+                                ticks: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Pie chart
+                var ctx4 = document.getElementById("pie-chart").getContext("2d");
+
+                new Chart(ctx4, {
+                    type: "pie",
+                    data: {
+                        labels: ["กลางแจ้ง", "ห้องประชุม", "ห้องอเนกประสงค์"],
+                        datasets: [{
+                            label: "Projects",
+                            weight: 9,
+                            cutout: 0,
+                            tension: 0.9,
+                            pointRadius: 2,
+                            borderWidth: 2,
+                            backgroundColor: ["#5EB5E4", "#E48D5E", "#72E45E", "#a8b8d8"],
+                            data: {!!json_encode($arrsumcoust)!!},
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: "index"
+                        },
+                        scales: {
+                            y: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawTicks: false
+                                },
+                                ticks: {
+                                    display: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawTicks: false
+                                },
+                                ticks: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Bar chart
+                var ctx5 = document.getElementById("bar-chart").getContext("2d");
+
+                new Chart(ctx5, {
+                    type: "bar",
+                    data: {
+                        labels: ["กลางแจ้ง", "ห้องประชุม", "ห้องอเนกประสงค์"],
+                        datasets: [{
+                            label: "ผู้ดูแลระบบ",
+                            weight: 500,
+                            borderWidth: 0,
+                            borderRadius: 4,
+                            backgroundColor: "#8D5EE4",
+                            data:  {!!json_encode($arr4)!!},
+                            fill: false,
+                            maxBarThickness: 50
+                        },{
+                            label: "ผู้ดูแลสถานที่",
+                            weight: 500,
+                            borderWidth: 0,
+                            borderRadius: 4,
+                            backgroundColor: "#5EB5E4",
+                            data: {!!json_encode($arr3)!!},
+                            fill: false,
+                            maxBarThickness: 50
+                        },{
+                            label: "ผู้ใช้ภายนอก",
+                            weight: 500,
+                            borderWidth: 0,
+                            borderRadius: 4,
+                            backgroundColor: "#E48D5E",
+                            data: {!!json_encode($arr)!!},
+                            fill: false,
+                            maxBarThickness: 50
+                        },{
+                            label: "ผู้ใช้ภายใน",
+                            weight: 500,
+                            borderWidth: 0,
+                            borderRadius: 4,
+                            backgroundColor: "#B5E45E",
+                            data: {!!json_encode($arr2)!!},
+                            fill: false,
+                            maxBarThickness: 50
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        },
+                        scales: {
+                            y: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: true,
+                                    drawOnChartArea: true,
+                                    drawTicks: false,
+                                    borderDash: [5, 5]
+                                },
+                                ticks: {
+                                    display: true,
+                                    padding: 5,
+                                    color: "#9ca2b7"
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: true,
+                                    drawOnChartArea: true,
+                                    drawTicks: true
+                                },
+                                ticks: {
+                                    display: true,
+                                    color: "#9ca2b7",
+                                    padding: 20
+                                }
+                            }
+                        }
+                    }
+                });
+                // Mixed chart
+
+                // Bubble chart
+            </script>
+
+
+
+        </div>
+
+
+    </div>
 
     <div class="cotainer-fluid py-4">
 
@@ -190,7 +542,7 @@
                                         <th class=" text-center text-xs font-weight-bolder" data-sort="name">
                                             ชื่อห้อง</th>
                                         <th class=" text-center text-xs font-weight-bolder" data-sort="name">
-                                            ลำดับ</th>
+                                            จำนวน</th>
 
 
 

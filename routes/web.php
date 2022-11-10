@@ -77,6 +77,9 @@ Route::get('/staff_login', [AuthController::class, "LoginView"])->name('stafflog
 Route::post('/do-login', [AuthController::class, "doLogin"]);
 Route::post('/do-register', [AuthController::class, "doRegister"]);
 Route::get('/dashboard', [AuthController::class, "dashboard"])->name('staff-dashboard');
+Route::get('/staff_dashboard/search', [AuthController::class, "dashboardse"])->name('staff-dashboard-se')->middleware('Stafftest');
+
+
 Route::get('/logout', [AuthController::class, "logout"]);
 
 //จัดการคำขอ
@@ -112,6 +115,9 @@ Route::post('/admin-do-login', [AuthAdminController::class, "doLogin"]);
 Route::post('/admin-do-register', [AuthAdminController::class, "doRegister"]);
 
 Route::get('/admin_dashboard', [AuthAdminController::class, "dashboard"])->name('admin-dashboard')->middleware('Stafftest');
+Route::get('/admin_dashboard/search', [AuthAdminController::class, "dashboardse"])->name('admin-dashboard-se')->middleware('Stafftest');
+
+
 
 Route::get('/admin_logout', [AuthAdminController::class, "logout"]);
 
@@ -133,6 +139,7 @@ Route::post('/locationmanage/update/{id}', [LocaiotnManageSuperAdmin::class, 'up
 //admin จัดการคำขอ
 Route::get('/request/superadmin', [RequestController::class, 'index'])->name('request-manage');
 Route::post('/request/update/{id}', [RequestController::class, 'update']);
+
 Route::get('/request/delete/{id}', [RequestController::class, 'delete']);
 
 Route::post('/request/updatereq/{id}', [RequestController::class, 'updatereq'])->name('updatereq');
@@ -168,9 +175,19 @@ Route::get('fullcalenderadmin/{id}', [AddBookingAdmin::class, 'index2']);
 //Request Admin
 Route::get('/request/admin/', [RequestAdminController::class, 'index'])->name('request-admin');
 
+
+//historyaddmin
+Route::get('/manage/history/admin', [HistoryAdmin::class, 'indexadmin'])->name('history_index_admin');
+
+Route::get('/manage/history/user', [HistoryAdmin::class, 'indexuser'])->name('history_index_user');
+
 //calendar ทั้งหมด
 Route::get('/calendar/admin/', [AdminFullcalendar::class, 'index'])->name('calendar-admin');
 Route::get('/calendar/admin/{id}', [AdminFullcalendar::class, 'edit']);
+
+
+Route::get('/calendar/staff/', [AdminFullcalendar::class, 'indexstaff'])->name('calendar-staff');
+Route::get('/calendar/staff/{id}', [AdminFullcalendar::class, 'editstaff']);
 
 //
 Route::get('fullcalenderadmin/', [FullCalenderController::class, 'indexadmin']);

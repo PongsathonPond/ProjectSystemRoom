@@ -169,6 +169,49 @@
     </div>
 
 
+    <div class="containner" style="margin-top:4%">
+
+
+                     <form action="{{route('admin-dashboard-se')}}" method="get"  >
+                    <div class="row">
+                        <div class="col-1">
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">ค้นหาการขอ/การใช้</label>
+
+                        @if($path == "2")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="2" >การขอใช้</option>
+                                <option value="1" >การใช้</option>
+                                <option value="0" >ทั้งหมด</option>
+
+                            </select>
+                        @elseif($path == "1")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="1" >การใช้</option>
+                                <option value="2" >การขอใช้</option>
+                                <option value="0" >ทั้งหมด</option>
+                            </select>
+                        @elseif($path == "0")
+                            <select class="form-control"  name="test" id="gender">
+                                <option value="0" >ทั้งหมด</option>
+                                <option value="1" >การใช้</option>
+                                <option value="2" >การขอใช้</option>
+                            </select>
+                        @endif
+
+                    </div>
+                        </div>
+                        <div class="col-1">
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div>
+                        </div>
+                </form>
+        </div>
+    </div>
+
 
     <div class="cotainer-fluid py-4">
 
@@ -260,10 +303,7 @@
 
                 <script type="text/javascript">
                     // Line chart
-              
-
                     // Line chart with gradient
-
                     // Doughnut chart
                     var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
                  
@@ -503,7 +543,7 @@
                                         <th class=" text-center text-xs font-weight-bolder" data-sort="name">
                                             ชื่อห้อง</th>
                                         <th class=" text-center text-xs font-weight-bolder" data-sort="name">
-                                            ลำดับ</th>
+                                            จำนวน</th>
 
 
 
