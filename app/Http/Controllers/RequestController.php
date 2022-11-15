@@ -11,9 +11,18 @@ class RequestController extends Controller
     public function index()
     {
         $location = Location::all();
-        $booking = BookingList::paginate(10);
+        $booking = BookingList::where('status','!=',10)->paginate(10);
 
         return view('page.admin.request.SuperAdmin.index', compact('booking', 'location'));
+
+    }
+
+    public function cancel()
+    {
+        $location = Location::all();
+        $booking = BookingList::where('status',10)->paginate(10);
+
+        return view('page.admin.request.SuperAdmin.cancel', compact('booking', 'location'));
 
     }
 
@@ -68,6 +77,32 @@ class RequestController extends Controller
         ]);
 
         return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
+        // return redirect()->route('usermanager')->with('success',"อัพเดตข้อมูลเรียบร้อย");
+    }
+
+    public function updateedit(Request $request, $id)
+    {
+
+
+        $request->validate([
+
+            'status' => 'required',
+
+        ],
+
+            ['status.required' => "กรุณาใส่สถานะ",
+
+            ]
+        );
+
+
+        BookingList::find($id)->update([
+
+            'status' => $request->status,
+
+        ]);
+
+        return redirect()->back()->with('updateedit', "อัพเดตข้อมูลเรียบร้อย");
         // return redirect()->route('usermanager')->with('success',"อัพเดตข้อมูลเรียบร้อย");
     }
 

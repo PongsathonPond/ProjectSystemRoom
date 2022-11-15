@@ -35,6 +35,12 @@ class BookingStatus extends Seeder
 
         ]);
 
+        DB::table('bookingstatus')->insert([
+            'id' => 10,
+            'bookingstatus_name' => 'ขอยกเลิกการจอง',
+
+        ]);
+
       
 
     }

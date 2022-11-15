@@ -44,6 +44,18 @@
         </script>
     @endif
 
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'ลบข้อมูลไม่ได้',
+                showConfirmButton: false,
+                timer: 5000
+            })
+        </script>
+    @endif
+
     <!-- Button trigger modal -->
     <button type="button" class="btn bg-gradient-success fa-solid fas fa-user-plus" data-bs-toggle="modal"
             data-bs-target="#STAFF">

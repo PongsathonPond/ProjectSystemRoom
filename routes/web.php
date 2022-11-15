@@ -138,11 +138,18 @@ Route::post('/locationmanage/update/{id}', [LocaiotnManageSuperAdmin::class, 'up
 
 //admin จัดการคำขอ
 Route::get('/request/superadmin', [RequestController::class, 'index'])->name('request-manage');
+Route::get('/request/cancel', [RequestController::class, 'cancel'])->name('request-cancel');
+
+
 Route::post('/request/update/{id}', [RequestController::class, 'update']);
 
 Route::get('/request/delete/{id}', [RequestController::class, 'delete']);
 
 Route::post('/request/updatereq/{id}', [RequestController::class, 'updatereq'])->name('updatereq');
+Route::post('/request/cancel/{id}', [RequestController::class, 'updateedit'])->name('updatecancel');
+
+
+
 //sendemail
 Route::post('/sendmail/update/{id}', [EmailController::class, 'sendEmailNew'])->name('addlist');
 
