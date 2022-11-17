@@ -537,7 +537,6 @@
 
         </div>
 
-        {{ $booking->links() }}
 
     </div>
 
@@ -556,9 +555,10 @@
                     "info": '',
                     "infoEmpty": "ไม่มีข้อมูล",
                     "infoFiltered": "",
+                    "lengthMenu": "  แสดง _MENU_ ข้อมูล",
                     "paginate": {
-                        "previous": "ปัจจุบัน",
-                        "next": "หน้า"
+                        "previous": "กลับ",
+                        "next": "ถัดไป"
                     }
                 }
             });

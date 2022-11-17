@@ -54,7 +54,7 @@
 
                     <div class="table-responsive p-0">
                         {{-- id="myTable" --}}
-                        <table class="align-items-center mb-0 table">
+                        <table class="align-items-center mb-0 table" id="myTable">
 
                             <thead>
                                 <tr>
@@ -286,7 +286,7 @@
         </div>
 
     </div>
-    {{ $booking->links() }}
+{{--    {{ $booking->links() }}--}}
     </div>
 
 
@@ -304,22 +304,28 @@
         }
     </script>
     <script>
-        $(document).ready(function() {
+            $(document).ready(function () {
             $('#myTable').DataTable({
-                paging: false,
+                responsive:true,
+                paging: true,
+                lengthMenu: [ 10, 25, 50, 75, 100 ],
                 ordering: false,
                 info: false,
                 "language": {
                     "search": "ค้นหา:",
-                    "lengthMenu": "",
                     "zeroRecords": "ไม่พบข้อมูล - ขออภัย",
                     "info": '',
                     "infoEmpty": "ไม่มีข้อมูล",
                     "infoFiltered": "",
-                    "paginate": ""
+                    "lengthMenu": "  แสดง _MENU_ ข้อมูล",
+                    "paginate": {
+                        "previous": "กลับ",
+                        "next": "ถัดไป"
+                    }
                 }
             });
         });
+
 
         $(document).ready(function() {
             $('.step').each(function(index, element) {

@@ -10,7 +10,7 @@ class Vice_RequestController extends Controller
 {
     public function index()
     {
-        $booking = BookingList::paginate(10);
+        $booking = BookingList::paginate(10000);
         return view('page.vice_admin.request.index', compact('booking'));
     }
 

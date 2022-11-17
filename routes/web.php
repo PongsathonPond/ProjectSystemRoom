@@ -178,11 +178,8 @@ Route::get('/addbookingadmin/', [AddBookingAdmin::class, 'index'])->name('add-bo
 Route::get('/addbookingadmin/{id}', [AddBookingAdmin::class, 'edit']);
 Route::post('/addbookingadmin/add', [AddBookingAdmin::class, 'store'])->name('booking-addadmin');
 Route::get('fullcalenderadmin/{id}', [AddBookingAdmin::class, 'index2']);
-
 //Request Admin
 Route::get('/request/admin/', [RequestAdminController::class, 'index'])->name('request-admin');
-
-
 //historyaddmin
 Route::get('/manage/history/admin', [HistoryAdmin::class, 'indexadmin'])->name('history_index_admin');
 

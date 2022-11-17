@@ -119,7 +119,7 @@ class StaffController extends Controller
             ->join('staff', 'staff.id', 'attentions.staff_id')
             ->where('staff.id', '=', session('id'))
             ->select('locations.*', 'attentions.*', 'staff.email')
-            ->paginate(10);
+            ->paginate(1000);
 
         return view('page.staff.location.index', compact('locationstaff'));
 

@@ -11,7 +11,7 @@ class RequestController extends Controller
     public function index()
     {
         $location = Location::all();
-        $booking = BookingList::where('status','!=',10)->paginate(10);
+        $booking = BookingList::where('status','!=',10)->paginate(10000);
 
         return view('page.admin.request.SuperAdmin.index', compact('booking', 'location'));
 
@@ -20,7 +20,7 @@ class RequestController extends Controller
     public function cancel()
     {
         $location = Location::all();
-        $booking = BookingList::where('status',10)->paginate(10);
+        $booking = BookingList::where('status',10)->paginate(10000);
 
         return view('page.admin.request.SuperAdmin.cancel', compact('booking', 'location'));
 

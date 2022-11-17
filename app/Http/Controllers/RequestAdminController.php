@@ -11,7 +11,7 @@ class RequestAdminController extends Controller
     public function index()
     {
         $location = Location::all();
-        $booking = BookingList::where('admin_id', session('id'))->paginate(5);
+        $booking = BookingList::where('admin_id', session('id'))->paginate(1000);
 
         return view('page.admin.request.me.index', compact('booking', 'location'));
     }

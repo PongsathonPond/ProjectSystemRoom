@@ -22,11 +22,15 @@
 </head>
 <style>
     #calendar {
-        max-width: 1100px;
-        margin: 0 auto;
-        margin-top: 20px;
-        height: 70vh;
-
+        max-width: 1000px;
+        margin: 16px auto;
+        margin-top: 25px;
+        height: 100%;
+        padding: 0px 15px 0px 15px;
+    }
+    .dataTables_filter input {
+        width: 120px !important;
+        margin-right: 10px;
     }
 </style>
 

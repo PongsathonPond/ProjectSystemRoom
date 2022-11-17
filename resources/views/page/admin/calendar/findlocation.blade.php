@@ -29,6 +29,10 @@
         padding: 0px 15px 0px 15px;
 
     }
+    .dataTables_filter input {
+        width: 120px !important;
+        margin-right: 10px;
+    }
 </style>
 
 </html>

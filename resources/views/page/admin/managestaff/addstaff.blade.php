@@ -49,7 +49,7 @@
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'ลบข้อมูลไม่ได้',
+                title: 'ไม่สามารถลบข้อมูลได้ ต้องลบสถานที่รับผิดชอบออกก่อน',
                 showConfirmButton: false,
                 timer: 5000
             })

@@ -27,8 +27,12 @@
         margin-top: 25px;
         height: 100%;
         padding: 0px 15px 0px 15px;
-
     }
+    .dataTables_filter input {
+        width: 120px !important;
+        margin-right: 10px;
+    }
+
 </style>
 
 </html>
@@ -42,12 +46,9 @@
                 <div class="card-header">
                     <h5 class="mb-0">รายชื่อห้อง</h5>
                 </div>
-
-                <div class="table-responsive" >
-
-                    <div class="card-body">
-
-                        <table class="table align-items-center" id="myTable">
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive" >
+                        <table class="table align-items-center" id="myTable" style="">
                             <thead class="thead-light">
                             <tr>
                                 <th class=" text-center text-xs font-weight-bolder" data-sort="name">รูป</th>
@@ -91,8 +92,8 @@
 
                     </div>
 
-
                 </div>
+
 
             </div>
 
@@ -184,11 +185,16 @@
 
     <script>
         $(document).ready(function() {
+            $('.dataTables_filter input[type="search"]').css(
+                {'width':'350px','display':'inline-block'}
+            );
             $('#myTable').DataTable({
                 paging: false,
                 responsive:true,
                 ordering: false,
                 info: false,
+
+
                 "language": {
                     "search": "ค้นหา:",
                     "lengthMenu": "",
@@ -196,7 +202,8 @@
                     "info": '',
                     "infoEmpty": "ไม่มีข้อมูล",
                     "infoFiltered": "",
-                    "paginate": ""
+                    "paginate": "",
+
                 }
             });
         });
