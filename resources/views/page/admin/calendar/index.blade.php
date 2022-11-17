@@ -22,10 +22,11 @@
 </head>
 <style>
     #calendar {
-        max-width: 1100px;
-        margin: 0 auto;
-        margin-top: 20px;
-        height: 70vh;
+        max-width: 1000px;
+        margin: 16px auto;
+        margin-top: 25px;
+        height: 100%;
+        padding: 0px 15px 0px 15px;
 
     }
 </style>
@@ -41,17 +42,20 @@
                 <div class="card-header">
                     <h5 class="mb-0">รายชื่อห้อง</h5>
                 </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center" id="myTable">
-                        <thead class="thead-light">
-                            <tr>
 
+                <div class="table-responsive" >
+
+                    <div class="card-body">
+
+                        <table class="table align-items-center" id="myTable">
+                            <thead class="thead-light">
+                            <tr>
                                 <th class=" text-center text-xs font-weight-bolder" data-sort="name">รูป</th>
                                 <th class=" text-center text-xs font-weight-bolder" data-sort="name">ชื่อห้อง</th>
                                 <th class=" text-center text-xs font-weight-bolder" data-sort="name">จัดการ</th>
                             </tr>
-                        </thead>
-                        <tbody class="list">
+                            </thead>
+                            <tbody class="list">
 
                             <tr class="ss" align="center">
                                 <td> ห้องทั้งหมด</td>
@@ -70,7 +74,7 @@
                                 <tr class="ss" align="center">
 
                                     <td> <img src="{{ asset($item->location_image) }}" alt="" width="60vh"
-                                            height="60vh"></td>
+                                              height="60vh"></td>
 
                                     <td>
                                         {{ $item->location_name }}
@@ -81,9 +85,12 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+
+                    </div>
+
 
                 </div>
 
@@ -179,6 +186,7 @@
         $(document).ready(function() {
             $('#myTable').DataTable({
                 paging: false,
+                responsive:true,
                 ordering: false,
                 info: false,
                 "language": {

@@ -77,7 +77,7 @@
                         สมัครสมาชิกเรียบร้อย
                     </a>
                     <p class="card-description mb-4">
-                        Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons.
+                        ขอบคุณที่สมัครสมาชิกใช้งานกับเรา
                     </p>
                     <div class="author align-items-center">
 

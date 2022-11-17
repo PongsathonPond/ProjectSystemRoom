@@ -51,6 +51,7 @@ class StaffController extends Controller
             ->join('attentions', 'locations.location_id', 'attentions.location_id')
             ->join('staff', 'staff.id', 'attentions.staff_id')
             ->where('status_cost', 1)
+            ->where('status','!=', 10)
             ->where('staff.id', '=', session('id'))
             ->select('booking_lists.*', 'locations.location_name')
             ->paginate(10);

@@ -145,7 +145,7 @@
                                                     data-bs-target="#TestReqEdit{{ $item->id }}" >
 
                                             </button>
-                                            @elseif($item->status == 10)
+                                        @elseif($item->status == 10)
 
                                             <button type="button" class="fas fa-edit fa-lg btn btn-primary"
                                                     data-bs-toggle="modal" id="test"

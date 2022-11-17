@@ -190,12 +190,12 @@
                                                         </a>
                                                     </li>
 
-                                                    <li><a class="dropdown-item text-center" data-bs-toggle="modal"
-                                                           data-bs-target="#exampleModal{{ $item->id }}" href="#"
-                                                           data-bs-toggle="tooltip" data-bs-placement="top"
-                                                           title="จัดการคำขอ">จัดการคำขอ
-                                                        </a>
-                                                    </li>
+{{--                                                    <li><a class="dropdown-item text-center" data-bs-toggle="modal"--}}
+{{--                                                           data-bs-target="#exampleModal{{ $item->id }}" href="#"--}}
+{{--                                                           data-bs-toggle="tooltip" data-bs-placement="top"--}}
+{{--                                                           title="จัดการคำขอ">จัดการคำขอ--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
 
 
 {{--                                                    @if($item->status_email == 1)--}}
@@ -217,10 +217,10 @@
 {{--                                                    @endif--}}
 
 
-                                                    <li><a class="dropdown-item text-center" href="{{ url('/request/delete/' . $item->id) }} class=" fas fa-trash-alt fa-lg btn btn-danger"
-                                                        onclick="return confirm('ลบหรือไม่ ?')" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="ลบข้อมูล" data-container="body"
-                                                        data-animation="true"">ลบข้อมูล</a></li>
+                                                    <li><a class="dropdown-item text-center" href="{{ url('/request/delete/' . $item->id) }}  class="fas fa-trash-alt fa-lg btn btn-danger"
+                                                        onclick="return confirm('ยืนยันการยกเลิก ?')" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="ยืนยันการยกเลิก" data-container="body"
+                                                        data-animation="true">ยืนยันการยกเลิก</a></li>
                                                 </ul>
 
 

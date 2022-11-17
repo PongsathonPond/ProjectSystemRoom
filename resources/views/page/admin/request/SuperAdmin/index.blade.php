@@ -83,9 +83,9 @@
                     <h4>จัดการข้อมูลการจอง</h4>
                 </div>
                 <br>
-                <div class="card-body px-0 pt-0 pb-2">
 
                     <div class="table-responsive p-0">
+                        <div class="card-body px-0 pt-0 pb-2">
 
                         <table class="align-items-center mb-0 table" id="myTable">
                             <thead>
@@ -545,17 +545,21 @@
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable({
-                paging: false,
+                responsive:true,
+                paging: true,
+                lengthMenu: [ 10, 25, 50, 75, 100 ],
                 ordering: false,
                 info: false,
                 "language": {
                     "search": "ค้นหา:",
-                    "lengthMenu": "",
                     "zeroRecords": "ไม่พบข้อมูล - ขออภัย",
                     "info": '',
                     "infoEmpty": "ไม่มีข้อมูล",
                     "infoFiltered": "",
-                    "paginate": ""
+                    "paginate": {
+                        "previous": "ปัจจุบัน",
+                        "next": "หน้า"
+                    }
                 }
             });
         });

@@ -334,6 +334,34 @@
         <!-- End Navbar -->
 
         {{-- content --}}
+        <div class="container-fluid py-4 ">
+            <div class="card shadow-lg  ">
+                <div class="card-body p-3">
+                    <div class="row gx-4">
+                        <div class="col-auto">
+                            <div class="avatar avatar-xl position-relative">
+
+                                <img src="/../../assets/img/admin.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                            </div>
+                        </div>
+                        <div class="col-auto my-auto">
+                            <div class="h-100">
+                                <h6 class="mb-1">
+                                    ยินดีต้อนรับ: {{ session('first_name') }} {{ session('last_name') }} {{ session('email') }}
+                                </h6>
+                                <p class="mb-0 font-weight-bold text-sm">
+                                    ผู้ดูแลสถานที่
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-file-pdf">&nbsp คู่มือการใช้งาน</i></button>
+                            <button type="button" class="btn btn-success"><i class="fas fa-file-pdf"> &nbsp ตัวอย่างเอกสารบันทึกข้อความ</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid py-4">
 
 
@@ -372,38 +400,9 @@
             </div>
             <hr class="horizontal dark my-1">
             <div class="card-body pt-sm-3 pt-0 overflow-auto">
-                <!-- Sidebar Backgrounds -->
-                <div>
-                    <h6 class="mb-0">สีเมนู</h6>
-                </div>
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        <span class="badge filter bg-gradient-primary active" data-color="primary"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-success" data-color="success"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-warning" data-color="warning"
-                            onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-danger" data-color="danger"
-                            onclick="sidebarColor(this)"></span>
-                    </div>
-                </a>
-
-
-                <!-- Navbar Fixed -->
 
                 <hr class="horizontal dark my-sm-4">
-                <div class="mt-2 mb-5 d-flex">
-                    <h6 class="mb-0">Light / Dark</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
-                            onclick="darkMode(this)">
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

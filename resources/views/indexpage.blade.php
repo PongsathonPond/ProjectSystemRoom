@@ -8,11 +8,24 @@
 
     <link href="../css/csslogin.css" rel="stylesheet" />
     <title>Login</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
 
-   
+@if (session('fail'))
+    <script>
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'ไอดีหรือรหัสผ่านผิด',
+            showConfirmButton: true,
+            timer: 2500
+        })
+    </script>
+@endif
+
     
     @php
 

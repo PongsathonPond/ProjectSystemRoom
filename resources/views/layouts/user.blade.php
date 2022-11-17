@@ -273,23 +273,37 @@ this.closest('form').submit();">
                 </div>
             </div>
         </nav>
-        <!-- End Navbar -->
 
-        {{-- content --}}
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-4 ">
+            <div class="card shadow-lg  ">
+                <div class="card-body p-3">
+                    <div class="row gx-4">
+                        <div class="col-auto">
+                            <div class="avatar avatar-xl position-relative">
 
-            
-
-               {{-- <div class="container-fluid">
-        <div class="card shadow-sm mx-5 mb-3">
-            <div class="row gx-1 p-3">
-                <div class="avatar avatar-lg position-relative">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/5.webp" class="rounded-3" style="width: 75px;"
-                        alt="Avatar" />
+                                <img src="/../../assets/img/admin.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                            </div>
+                        </div>
+                        <div class="col-auto my-auto">
+                            <div class="h-100">
+                                <h6 class="mb-1">
+                                    ยินดีต้อนรับ: {{ session('first_name') }} {{ session('last_name') }}
+                                </h6>
+                                <p class="mb-0 font-weight-bold text-sm">
+                                    ผู้ใช้ทั่วไป
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                            <button type="button" class="btn btn-primary"><i class="fas fa-file-pdf">&nbsp คู่มือการใช้งาน</i></button>
+                            <button type="button" class="btn btn-success"><i class="fas fa-file-pdf"> &nbsp ตัวอย่างเอกสารบันทึกข้อความ</i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+        <div class="container-fluid py-4">
+
             @include('include.contentuser')
 
 
@@ -316,9 +330,6 @@ this.closest('form').submit();">
                 </div>
             </div>
 
-             
-
-                    <p>สถานะ:ผู้ใช้ภายนอก</p>
             <hr class="horizontal dark my-1">
             <div class="card-body pt-sm-3 pt-0 overflow-auto">
           

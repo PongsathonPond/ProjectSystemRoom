@@ -24,9 +24,9 @@
 
     #calendar {
         max-width: 1000px;
-        margin: 0 auto;
+        margin: 16px auto;
         margin-top: 25px;
-        height: 75vh;
+        height: 100%;
         padding: 0px 15px 0px 15px;
     }
 </style>
@@ -37,7 +37,7 @@
  
 
     <div class="container-fluid">
-        <div class="card shadow-sm mx-5">
+        <div class="card shadow-sm ">
             <div id='calendar'></div>
         </div>
     </div>
@@ -55,15 +55,20 @@
                 <div class="modal-body">
 
                     <span>ชื่อรายการจอง : <b> <span id="project_name"> </b></span>
-                    </span>
+
                     <br>
-                    <span>เวลาเริ่ม-สิ้นสุด : <b> <span id="title"></b> </span>
-                    </span>
+                    <span>ชื่อห้อง : <b> <span id="title"></b> </span>
+                    <br>
+                    <span>เวลาเริ่ม : <b> <span id="start"> </b> </span>
+                    <br>
+                    <span>เวลาสิ้นสุด : <b> <span id="end"> </b> </span>
+
+
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">ปิด</button>
+
                 </div>
             </div>
         </div>
@@ -105,9 +110,24 @@
                         type: 'get',
                         url: "{{ url('/booking') }}/" + calEvent.id,
                         success: function(respones) {
+                            var start = new Date(respones.start);
 
+                            var end = new Date(respones.end);
+
+                            var newstart = start.toLocaleString("th-TH", {
+                                timeZone: 'Asia/Bangkok',
+
+                            })
+
+                            var newend = end.toLocaleString("th-TH", {
+                                timeZone: "Asia/Bangkok"
+                            })
+                            // $('#project_name').text(respones.project_name);
+                            // $('#title').text(respones.title);
                             $('#project_name').text(respones.project_name);
                             $('#title').text(respones.title);
+                            $('#start').text(newstart);
+                            $('#end').text(newend);
                         }
 
                     })

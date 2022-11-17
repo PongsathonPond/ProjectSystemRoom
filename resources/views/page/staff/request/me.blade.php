@@ -102,6 +102,8 @@
                                                 <span class="badge bg-secondary">รอการอนุมัติ</span>
                                             @elseif($item->status == 1)
                                                 <span class="badge bg-success">อนุมัติเรียบร้อย</span>
+                                            @elseif($item->status == 10)
+                                                <span class="badge bg-warning">แจ้งขอยกเลิกการจอง</span>
                                             @else
                                                 <span class="badge bg-danger">ไม่อนุมัติ</span>
                                             @endif
@@ -120,21 +122,43 @@
 
                                             <!-- Button trigger modal -->
 
-                                            @if ($item->status == 1)
+{{--                                            @if ($item->status == 1)--}}
+{{--                                                <button type="button" class="fas fa-edit fa-lg btn btn-primary"--}}
+{{--                                                    data-bs-toggle="modal" data-bs-target="#TestReq{{ $item->id }}"--}}
+{{--                                                    disabled>--}}
+
+{{--                                                </button>--}}
+{{--                                            @else--}}
+{{--                                                <button type="button" class="fas fa-edit fa-lg btn btn-primary"--}}
+{{--                                                    data-bs-toggle="modal" data-bs-target="#TestReq{{ $item->id }}">--}}
+
+{{--                                                </button>--}}
+{{--                                            @endif--}}
+
+
+                                            @if ($item->status == 1 )
                                                 <button type="button" class="fas fa-edit fa-lg btn btn-primary"
-                                                    data-bs-toggle="modal" data-bs-target="#TestReq{{ $item->id }}"
-                                                    disabled>
+                                                        data-bs-toggle="modal" id="test"
+                                                        data-bs-target="#TestReqEdit{{ $item->id }}" >
 
                                                 </button>
+                                            @elseif($item->status == 10)
+
+                                                <button type="button" class="fas fa-edit fa-lg btn btn-primary"
+                                                        data-bs-toggle="modal" id="test"
+                                                        data-bs-target="#TestReqEdit{{ $item->id }}" disabled>
+
+                                                </button>
+
                                             @else
                                                 <button type="button" class="fas fa-edit fa-lg btn btn-primary"
-                                                    data-bs-toggle="modal" data-bs-target="#TestReq{{ $item->id }}">
+                                                        data-bs-toggle="modal" id="test"
+                                                        data-bs-target="#TestReq{{ $item->id }}">
 
                                                 </button>
                                             @endif
 
-
-                                            @if ($item->status == 1)
+                                            @if ($item->status == 1 OR $item->status == 10)
                                                 <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
                                                    onclick="return alert('ไม่สามารถลบข้อมูลได้')"> </a>
                                             @else
@@ -266,7 +290,62 @@
                                             </div>
                     </div>
 
-                    <!-- EndModalReq -->
+                    <div class="modal fade" id="TestReqEdit{{$item->id}}" tabindex="-1"
+                         role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        แจ้งขอยกเลิกการจอง</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ url('/request/cancel/'. $item->id) }}"
+                                          method="post">
+                                        @csrf
+
+                                        <div class="row" style="text-align: left">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="example-datetime-local-input"
+                                                           class="form-control-label">กดปุ่มยืนยันเพื่อขอยกเลิกการจอง</label>
+                                                    <input class="form-control"
+                                                           type="hidden" name="status"
+                                                           value="10"
+                                                    >
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="ss">
+                                            <button type="submit"
+                                                    class="btn bg-gradient-primary">ยืนยัน
+                                            </button>
+                                            <button type="button"
+                                                    class="btn bg-gradient-secondary"
+                                                    data-bs-dismiss="modal">ปิด
+                                            </button>
+
+                                        </div>
+                                </div>
+
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- EndModalReq -->
 
                 </div>
 
