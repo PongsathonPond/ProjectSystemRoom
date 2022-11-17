@@ -2,7 +2,17 @@
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
 
-
+@if (session('error'))
+    <script>
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'ไม่สามารถลบข้อมูลได้ เนื่องจากห้องมีการทำรายการจอง',
+            showConfirmButton: false,
+            timer: 5000
+        })
+    </script>
+@endif
 @section('content')
     <div class="row">
         <div class="col-xl-12 order-xl-1">
@@ -138,8 +148,9 @@
                                                 <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
                                                     onclick="testdelete();"> </a>
                                             @else
-                                                <a href="" class="fas fa-trash-alt fa-lg btn btn-danger"
-                                                    onclick="return confirm('ยกเลิกการจอง ?')"> </a>
+                                                <a href="{{ url('/request/delete/' . $item->id) }}"
+                                                   class="fas fa-trash-alt fa-lg btn btn-danger"
+                                                   onclick="return confirm('ลบหรือไม่ ?')"> </a>
                                             @endif
                                             <!-- Modal -->
                                             <!-- ModalReq -->
@@ -215,15 +226,6 @@
                                                                                 id="example-datetime-local-input">
                                                                         </div>
                                                                     </div>
-
-
-
-
-
-
-
-
-
 
                                                                 </div>
 

@@ -19,6 +19,18 @@
                 </script>
             @endif
 
+            @if (session('error'))
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'ไม่สามารถลบข้อมูลได้ เนื่องจากห้องมีการทำรายการจอง',
+                            showConfirmButton: false,
+                            timer: 5000
+                        })
+                    </script>
+                @endif
+
             @if (session('delete'))
                 <script>
                     Swal.fire({

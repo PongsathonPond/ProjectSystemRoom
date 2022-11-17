@@ -13,6 +13,17 @@
         </script>
     @endif
 
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'ไม่สามารถลบข้อมูลได้ เนื่องจากผู้ใช้มีการทำรายการจอง',
+                showConfirmButton: false,
+                timer: 5000
+            })
+        </script>
+    @endif
     <button type="button" class="btn bg-gradient-success fa-solid fas fa-user-plus" data-bs-toggle="modal"
             data-bs-target="#ADMIN">
 
