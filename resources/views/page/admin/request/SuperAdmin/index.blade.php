@@ -386,6 +386,9 @@
                                                 @endforeach
                                         @foreach ($item->booktostaff as $item2)
                                             {{ $item2->email }}
+                                                @endforeach
+                                        @foreach ($item->booktoinsider as $item2)
+                                            {{ $item2->email }}
                                                 @endforeach >
 
 
