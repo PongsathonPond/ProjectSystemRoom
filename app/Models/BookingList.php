@@ -54,4 +54,11 @@ class BookingList extends Model
         return $this->hasMany(Insiders::class, 'id', 'insiders_id');
 
     }
+
+    public function booktostaff()
+    {
+
+        return $this->hasMany(Staff::class, 'id', 'staff_id');
+
+    }
 }

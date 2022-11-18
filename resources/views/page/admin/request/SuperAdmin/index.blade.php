@@ -383,7 +383,13 @@
                                                 @endforeach
                                         @foreach ($item->booktoadmin as $item2)
                                             {{ $item2->email }}
+                                                @endforeach
+                                        @foreach ($item->booktostaff as $item2)
+                                            {{ $item2->email }}
                                                 @endforeach >
+
+
+
 
 
                                         <input type="hidden" class="form-control" name="head"

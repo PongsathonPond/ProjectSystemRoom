@@ -78,15 +78,46 @@
                         @csrf
 
                         <div class="row">
-                            <div class="col-6">
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>คำนำหน้า</label>
+                                    <select class="form-control" type="select" id="exampleFormControlSelect1" name="title_name" >
+                                        <option value="นาย">นาย</option>
+                                        <option value="นางสาว">นางสาว</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>ชื่อ</label>
+                                    <input type="text" name="first_name"  class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>นามสกุล</label>
+                                    <input type="text" name="last_name"  class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>เบอร์โทร</label>
+                                    <input type="text" name="phone_number"  class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="email" name="email" value="{{ old('email') }}" class="form-control"/>
-
                                 </div>
                             </div>
-                            <div class="col-6">
-
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" name="password" class="form-control"/>
@@ -97,6 +128,8 @@
                                     @enderror
                                 </div>
                             </div>
+
+
                         </div>
 
 

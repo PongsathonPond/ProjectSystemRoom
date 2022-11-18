@@ -347,7 +347,7 @@
                         <div class="col-auto my-auto">
                             <div class="h-100">
                                 <h6 class="mb-1">
-                                    ยินดีต้อนรับ: {{ session('first_name') }} {{ session('last_name') }} {{ session('email') }}
+                                    ยินดีต้อนรับ: {{ session('first_name') }} {{ session('last_name') }}
                                 </h6>
                                 <p class="mb-0 font-weight-bold text-sm">
                                     ผู้ดูแลสถานที่

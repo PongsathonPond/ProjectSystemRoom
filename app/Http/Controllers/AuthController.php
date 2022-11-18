@@ -37,6 +37,8 @@ class AuthController extends Controller
             if (Hash::check($request->password, $userInfo->password)) {
                 $data = $request->input();
                 $request->session()->put('id', $userInfo->id);
+                $request->session()->put('first_name', $userInfo->first_name);
+                $request->session()->put('last_name', $userInfo->last_name);
                 $request->session()->put('email', $data['email']);
 
                 // return view('page.staff.routes.index');
@@ -53,7 +55,10 @@ class AuthController extends Controller
     public function doRegister(Request $request)
     {
         $validator = Validator::make($request->all(), [
-
+            'title_name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone_number' => 'required',
             'email' => 'required|email|unique:staff,email', // required and email format validation
             'password' => 'required|min:8', // required and number field validation
 
@@ -67,6 +72,10 @@ class AuthController extends Controller
         } else {
             //validations are passed, save new user in database
             $User = new Staff;
+            $User->title_name = $request->title_name;
+            $User->first_name = $request->first_name;
+            $User->last_name = $request->last_name;
+            $User->phone_number = $request->phone_number;
             $User->email = $request->email;
             $User->password = bcrypt($request->password);
             $User->save();

@@ -14,15 +14,12 @@
 @section('contentstaff')
     <div class="container-fluid mt--6">
         <div class="row">
-
-
             <div class="col-12">
                 <div class="card ">
                     <div class="card-header">
                         <h4>เพิ่มรายการจอง</h4>
                     </div>
                     <div class="card-body pt-0">
-
                         <form action="{{ route('booking-addstaff') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
@@ -50,9 +47,6 @@
                                         <input type="hidden" name="club_name" value="null">
                                     </div>
                                 </div>
-
-
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-datetime-local-input"
