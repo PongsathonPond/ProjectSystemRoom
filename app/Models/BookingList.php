@@ -24,6 +24,7 @@ class BookingList extends Model
         'status_email',
         'file_document',
         'title',
+        'more',
 
     ];
 

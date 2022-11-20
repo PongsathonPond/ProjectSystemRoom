@@ -78,7 +78,6 @@
                                             min="<?php echo date('Y-m-d H:i'); ?>" value="<?php echo date('Y-m-d H:i'); ?>"
                                             id="example-datetime-local-input">
 
-
                                     </div>
 
 
@@ -92,6 +91,15 @@
                                     </div>
 
                                 </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">หมายเหตุอื่นๆ</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="more"></textarea>
+                                    </div>
+                                </div>
+
+
 
                             </div>
                             <br>

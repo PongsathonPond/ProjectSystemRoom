@@ -164,6 +164,18 @@
                                                 {{ $item1->first_name }}
                                                 {{ $item1->last_name }}
                                             @endforeach
+                                                @foreach ($item->booktoadmin as $item1)
+                                                    {{ $item1->first_name }}
+                                                    {{ $item1->last_name }}
+                                                @endforeach
+                                                @foreach ($item->booktoinsider as $item1)
+                                                    {{ $item1->first_name }}
+                                                    {{ $item1->last_name }}
+                                                @endforeach
+                                                @foreach ($item->booktostaff as $item1)
+                                                    {{ $item1->first_name }}
+                                                    {{ $item1->last_name }}
+                                                @endforeach
 
 
                                         </td>

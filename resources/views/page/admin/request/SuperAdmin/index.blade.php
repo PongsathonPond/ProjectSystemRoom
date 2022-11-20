@@ -180,6 +180,13 @@
                                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                                            title="เอกสารบันทึกข้อความ">เอกสารบันทึกข้อความ</a>
                                                     </li>
+
+                                                    <li><a class="dropdown-item text-center" data-bs-toggle="modal"
+                                                           data-bs-target="#TestReqedit{{ $item->id }}" href="#"
+                                                           data-bs-toggle="tooltip" data-bs-placement="top"
+                                                           title="แก้ไขรายละเอียดการจอง">รายละเอียดการจอง
+                                                        </a>
+                                                    </li>
                                                     <li><a class="dropdown-item text-center" data-bs-toggle="modal"
                                                            data-bs-target="#TestReq{{ $item->id }}" href="#"
                                                            data-bs-toggle="tooltip" data-bs-placement="top"
@@ -341,6 +348,148 @@
                     </div>
 
                     <!-- EndModalReq -->
+                        <div class="modal fade" id="TestReqedit{{ $item->id }}" tabindex="-1"
+                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            รายละเอียดการจอง</h5>
+                                        <button type="button" class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="pl-lg-4">
+                                            <div class="row mt-4 ">
+
+                                                <div class="col-lg-4 ">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label">ชื่อรายการจอง</label>
+                                                        <input type="text" class="form-control"
+                                                               value="{{ $item->project_name }}" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class=" col-lg-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="area">หน่วยงาน
+                                                        </label>
+                                                        <input type="text" class="form-control"
+                                                               value="{{ $item->agency }}" readonly>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                               for="location_building">ห้องที่จอง</label>
+                                                        <input type="text" class="form-control" name="location_building"
+                                                               value=@foreach ($item->booktolocation as $item1) {{ $item1->location_name }} @endforeach
+                                                        readonly>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                               for="location_floor">เวลาเริ่มต้น</label>
+                                                        <input type="text" class="form-control"
+                                                               value="{{ show_date($item->start) }}" readonly>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label"
+                                                               for="accommodate_people">เวลาสิ้นสุด</label>
+                                                        <input type="text" class="form-control"
+                                                               value="{{ show_date($item->end) }}" readonly>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">หมายเหตุอื่นๆ</label>
+                                                        <input type="text" class="form-control" rows="3"
+                                                               value="{{$item->more}}" readonly>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-lg">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="location_image">รูปภาพ</label>
+
+
+
+                                                    </div>
+
+                                                    <div class="card">
+                                                        <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
+                                                            <a href="javascript:;" class="d-block">
+                                                                @foreach ($item->booktolocation as $item1)
+                                                                    <img src="{{ asset($item1->location_image) }}"
+                                                                         alt="" class="img-fluid border-radius-lg">
+                                                                @endforeach
+
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="location_image">สถานะการจอง : </label>
+
+                                                @if ($item->status == 0)
+                                                    <span class="badge bg-secondary">รอการอนุมัติ</span>
+                                                @elseif($item->status == 1)
+                                                    <span class="badge bg-success">อนุมัติเรียบร้อย</span>
+                                                @else
+                                                    <span class="badge bg-danger">ไม่อนุมัติ</span>
+                                                @endif
+
+                                            </div>
+
+                                            <hr class="my-4" />
+
+                                            <button type="button"
+                                                    class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">ปิด
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
 
                     <!-- ModalEmail -->

@@ -79,7 +79,7 @@ class AddBookingAdmin extends Controller
         $addcal->start = $request->start;
         $addcal->end = $request->end;
         $addcal->file_document = $full_path;
-
+        $addcal->more = $request->more;
         $addcal->save();
 
         $room_image->move($upload_location, $img_name);

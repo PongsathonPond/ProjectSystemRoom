@@ -58,9 +58,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-datetime-local-input"
-                                            class="form-control-label">Datetime</label>
+                                               class="form-control-label">เวลาเริ่มต้น</label>
                                         <input class="form-control" type="datetime-local" name="start"
-                                            value="2022-11-23T10:30:00" id="example-datetime-local-input">
+                                               min="<?php echo date('Y-m-d H:i'); ?>" value="<?php echo date('Y-m-d H:i'); ?>"
+                                               id="example-datetime-local-input">
                                     </div>
                                 </div>
 
@@ -73,10 +74,10 @@
 
                                     <div class="form-group">
                                         <label for="example-datetime-local-input"
-                                            class="form-control-label">Datetime</label>
+                                               class="form-control-label">เวลาสิ้นสุด</label>
                                         <input class="form-control" type="datetime-local" name="end"
-                                            value="2022-11-23T10:30:00" id="example-datetime-local-input">
-
+                                               min="<?php echo date('Y-m-d H:i'); ?>" value="<?php echo date('Y-m-d H:i'); ?>"
+                                               id="example-datetime-local-input">
 
                                     </div>
 
@@ -91,6 +92,12 @@
                                             accept="application/pdf">
                                     </div>
 
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">หมายเหตุอื่นๆ</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="more"></textarea>
+                                    </div>
                                 </div>
 
                             </div>

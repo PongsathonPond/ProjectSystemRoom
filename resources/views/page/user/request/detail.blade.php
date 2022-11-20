@@ -111,17 +111,17 @@
                                 <div class="card-profile-stats d-flex justify-content-center">
 
                                     @php
-                                        
+
                                         foreach ($booking->booktouser as $item1) {
                                             $name1 = $item1->title_name;
                                             $name2 = $item1->first_name;
                                             $name3 = $item1->last_name;
                                         }
-                                        
+
                                         foreach ($booking->booktoinsider as $item2) {
                                             $nameinsider = $item2->first_name;
                                         }
-                                        
+
                                     @endphp
 
                                     <div class="pl-lg-4">
@@ -199,6 +199,14 @@
 
 
 
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">หมายเหตุอื่นๆ</label>
+                                                    <input type="text" class="form-control" rows="3"
+                                                           value="{{$booking->more}}" readonly>
+
+                                                </div>
+                                            </div>
 
                                             {{-- @foreach ($booking->booktouser as $item1)
                                                 {{ $item1->title_name }}

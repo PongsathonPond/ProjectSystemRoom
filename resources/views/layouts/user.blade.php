@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/rmuti.png">
     <title>
-        Location Request RMUT
+        Location Request RMUTI
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -175,7 +175,7 @@
             </div>
 
             @php
-                
+
                 if (!empty($_SESSION['_login_info'])) {
                     $test = json_encode($_SESSION['_login_info']);
                     $obj = json_decode($test);
@@ -196,7 +196,7 @@ this.closest('form').submit();">
                     </a>
                 </form>
             @endif
-         
+
 
 
 
@@ -332,9 +332,9 @@ this.closest('form').submit();">
 
             <hr class="horizontal dark my-1">
             <div class="card-body pt-sm-3 pt-0 overflow-auto">
-          
+
                 <hr class="horizontal dark my-sm-4">
-           
+
             </div>
         </div>
     </div>

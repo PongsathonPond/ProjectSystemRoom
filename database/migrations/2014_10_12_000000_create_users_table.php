@@ -107,7 +107,7 @@ return new class extends Migration
             $table->string('end');
             $table->string('file_document');
             $table->string('project_cost')->default('nil');
-
+            $table->string('more')->nullable();
             $table->string('title');
             $table->string('status_email')->default(0);
 

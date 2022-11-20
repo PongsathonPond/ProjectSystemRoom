@@ -47,12 +47,14 @@
                                         <input type="hidden" name="club_name" value="null">
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="example-datetime-local-input"
-                                            class="form-control-label">วันเวลาเริ่มต้น</label>
+                                               class="form-control-label">เวลาเริ่มต้น</label>
                                         <input class="form-control" type="datetime-local" name="start"
-                                            id="example-datetime-local-input">
+                                               min="<?php echo date('Y-m-d H:i'); ?>" value="<?php echo date('Y-m-d H:i'); ?>"
+                                               id="example-datetime-local-input">
                                     </div>
                                 </div>
 
@@ -65,15 +67,17 @@
 
                                     <div class="form-group">
                                         <label for="example-datetime-local-input"
-                                            class="form-control-label">วันเวลาสิ้นสุด</label>
+                                               class="form-control-label">เวลาสิ้นสุด</label>
                                         <input class="form-control" type="datetime-local" name="end"
-                                            id="example-datetime-local-input">
-
+                                               min="<?php echo date('Y-m-d H:i'); ?>" value="<?php echo date('Y-m-d H:i'); ?>"
+                                               id="example-datetime-local-input">
 
                                     </div>
 
 
                                 </div>
+
+
 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -85,6 +89,13 @@
 
                                 </div>
 
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">หมายเหตุอื่นๆ</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="more"></textarea>
+                                </div>
                             </div>
                             <br>
                             <input type="hidden" name="staff_id" value="null">
