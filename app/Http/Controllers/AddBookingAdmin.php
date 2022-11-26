@@ -11,7 +11,7 @@ class AddBookingAdmin extends Controller
     public function index()
     {
 
-        $location = location::where('status',0)->get();
+        $location = location::where('status_location',0)->get();
         $booking = BookingList::all();
         return view('page.admin.booking.index', compact('location', 'booking'));
     }

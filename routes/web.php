@@ -76,7 +76,7 @@ Route::get('fullcalender/', [FullCalenderController::class, 'index']);
 Route::get('/staff_login', [AuthController::class, "LoginView"])->name('stafflogin');
 Route::post('/do-login', [AuthController::class, "doLogin"]);
 Route::post('/do-register', [AuthController::class, "doRegister"]);
-Route::get('/dashboard', [AuthController::class, "dashboard"])->name('staff-dashboard');
+Route::get('/dashboard', [AuthController::class, "dashboard"])->name('staff-dashboard')->middleware('Stafftest');;
 Route::get('/staff_dashboard/search', [AuthController::class, "dashboardse"])->name('staff-dashboard-se')->middleware('Stafftest');
 
 

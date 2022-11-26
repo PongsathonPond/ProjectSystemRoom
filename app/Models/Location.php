@@ -20,7 +20,7 @@ class Location extends Model
         'cost_fullday',
         'area',
         'location_type',
-        'status',
+        'status_location',
         'other',
 
     ];

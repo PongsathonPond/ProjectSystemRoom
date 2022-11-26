@@ -36,7 +36,7 @@ return new class extends Migration
 
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('status')->default(0);
+            $table->unsignedBigInteger('status_location')->default(0);
             $table->string('location_name');
             $table->string('location_building');
             $table->string('location_floor');
@@ -47,7 +47,7 @@ return new class extends Migration
             $table->string('area');
             $table->string('location_type');
             $table->string('other')->nullable();
-            $table->foreign('status')->references('id')->on('locationstatus');
+            $table->foreign('status_location')->references('id')->on('locationstatus');
             $table->timestamps();
         });
 

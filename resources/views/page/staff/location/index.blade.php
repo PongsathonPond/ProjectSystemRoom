@@ -116,7 +116,11 @@
 
 
                                             <td class="text-center align-middle">
-                                                test
+                                                @if($item->status_location == 0)
+                                                    <span class="badge badge-sm bg-gradient-success">พร้อมใช้</span>
+                                                @else
+                                                    <span class="badge badge-sm bg-gradient-danger">ไม่พร้อมใช้</span>
+                                                @endif
 
                                             </td>
 
@@ -144,13 +148,107 @@
                                                                 title="จัดการคำขอ">แก้ไขข้อมูลห้อง
                                                             </a>
                                                         </li>
-
+                                                        <li><a class="dropdown-item text-center" data-bs-toggle="modal"
+                                                               data-bs-target="#exampleModaltest{{ $item->location_id }}"
+                                                               href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                               title="จัดการคำขอ">ตั้งค่าห้อง
+                                                            </a>
+                                                        </li>
 
 
 
                                                 </div>
 
 
+                                                <div class="modal fade" id="exampleModaltest{{ $item->location_id }}"
+                                                     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                                    แก้ไขข้อมูลห้อง
+                                                                </h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+
+                                                                <form
+                                                                        action="{{ url('/locationmanage/updatest/' . $item->location_id) }}"
+                                                                        method="post" >
+                                                                    @csrf
+
+                                                                    <div class="pl-lg-4">
+                                                                        <div class="row" style="text-align: left">
+
+
+                                                                            <div class="col-lg-12">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-control-label"
+                                                                                           for="location_type">
+                                                                                        ประเภท :
+
+                                                                                        @if( $item->status_location == 0)
+                                                                                            <span
+                                                                                                    style="color: #1e7e34">พร้อมใช้</span>
+                                                                                        @else
+                                                                                            <span
+                                                                                                    style="color: red">ไม่พร้อมใช้</span>
+                                                                                        @endif
+
+                                                                                    </label>
+                                                                                    <select type="text "
+                                                                                            class="form-control "
+                                                                                            name="status_location">
+
+                                                                                        <option
+                                                                                                value="{{ $item->status_location  }}">
+                                                                                            เลือกสถานะห้อง</option>
+                                                                                        <option value="0">พร้อมใช้
+                                                                                        </option>
+                                                                                        <option value="1">
+                                                                                            ไม่พร้อมใช้
+                                                                                        </option>
+
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                        </div>
+
+
+
+
+
+
+
+                                                                        <div class="ss">
+                                                                            <button type="submit"
+                                                                                    class="btn bg-gradient-primary">บันทึก</button>
+                                                                            <button type="button"
+                                                                                    class="btn bg-gradient-secondary"
+                                                                                    data-bs-dismiss="modal">ปิด</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+
+
+
+
+
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
                                                 <!-- ModalEditLocation -->
@@ -183,7 +281,7 @@
                                                                                         for="location_name">ชื่อห้อง</label>
                                                                                     <input type="text" class="form-control"
                                                                                         name="location_name"
-                                                                                        value="{{ $item->location_name }}">
+                                                                                        value="{{ $item->location_name }}" readonly>
                                                                                 </div>
                                                                             </div>
 

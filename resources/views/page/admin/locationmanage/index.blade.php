@@ -104,7 +104,7 @@
                                         <td class="align-middle text-center">{{ $row->cost_halfday }}</td>
                                         <td class="align-middle text-center">{{ $row->cost_fullday }}</td>
                                         <td class="align-middle text-center">
-                                         @if($row->status == 0)
+                                         @if($row->status_location == 0)
                                                 <span class="badge badge-sm bg-gradient-success">พร้อมใช้</span>
                                             @else
                                                 <span class="badge badge-sm bg-gradient-danger">ไม่พร้อมใช้</span>
@@ -370,7 +370,7 @@
                                                                                        for="location_type">
                                                                                     ประเภท :
 
-                                                                                    @if( $row->status == 0)
+                                                                                    @if( $row->status_location == 0)
                                                                                         <span
                                                                                              style="color: #1e7e34">พร้อมใช้</span>
                                                                                     @else
@@ -381,10 +381,10 @@
                                                                                 </label>
                                                                                 <select type="text "
                                                                                         class="form-control "
-                                                                                        name="status">
+                                                                                        name="status_location">
 
                                                                                     <option
-                                                                                        value="{{ $row->status  }}">
+                                                                                        value="{{ $row->status_location  }}">
                                                                                         เลือกสถานะห้อง</option>
                                                                                     <option value="0">พร้อมใช้
                                                                                     </option>

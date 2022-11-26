@@ -11,7 +11,7 @@ class AddBookingUserout extends Controller
     public function index()
     {
 
-        $location = location::all();
+        $location = location::where('status_location',0)->get();
         $booking = BookingList::all();
         return view('page.user.booking.index', compact('location', 'booking'));
     }

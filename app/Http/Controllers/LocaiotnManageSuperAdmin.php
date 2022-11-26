@@ -181,7 +181,7 @@ class LocaiotnManageSuperAdmin extends Controller
     {
 
             location::find($location_id)->update([
-                'status' => $request->status,
+                'status_location' => $request->status_location,
             ]);
             return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
 
