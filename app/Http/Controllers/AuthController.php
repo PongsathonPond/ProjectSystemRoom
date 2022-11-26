@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,42 @@ class AuthController extends Controller
         return Auth::guard('staff');
     }
 
+//    public function doLogin(Request $request)
+//    {
+//        $request->validate([
+//            'email' => 'required|email',
+//            'password' => 'required',
+//        ]);
+//
+//        $userInfo = Staff::where('email', '=', $request->email)->first();
+//
+//        if (!$userInfo) {
+//            return back()->with('fail', 'We do not recognize your email address');
+//        } else {
+//            //check password
+//
+//            if (Hash::check($request->password, $userInfo->password)) {
+//                $data = $request->input();
+//                $request->session()->put('id', $userInfo->id);
+//                $request->session()->put('first_name', $userInfo->first_name);
+//                $request->session()->put('last_name', $userInfo->last_name);
+//                $request->session()->put('email', $data['email']);
+//
+//
+//
+//                // return view('page.staff.routes.index');
+//                return redirect()->route('staff-dashboard');
+//            } else {
+//
+//                return back()->with('fail', 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง');
+//            }
+//        }
+//
+//    }
+
     public function doLogin(Request $request)
     {
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -34,26 +69,22 @@ class AuthController extends Controller
             return back()->with('fail', 'We do not recognize your email address');
         } else {
             //check password
-
             if (Hash::check($request->password, $userInfo->password)) {
                 $data = $request->input();
                 $request->session()->put('id', $userInfo->id);
+                $request->session()->put('email', $data['email']);
                 $request->session()->put('first_name', $userInfo->first_name);
                 $request->session()->put('last_name', $userInfo->last_name);
-                $request->session()->put('email', $data['email']);
-
-
 
                 // return view('page.staff.routes.index');
                 return redirect()->route('staff-dashboard');
-            } else {
 
-                return back()->with('fail', 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง');
+            } else {
+                return back()->with('fail', 'Incorrect password');
             }
         }
 
     }
-
 
 
     public function doRegister(Request $request)
