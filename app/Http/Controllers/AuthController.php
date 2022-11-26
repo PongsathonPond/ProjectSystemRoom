@@ -34,6 +34,7 @@ class AuthController extends Controller
             return back()->with('fail', 'We do not recognize your email address');
         } else {
             //check password
+
             if (Hash::check($request->password, $userInfo->password)) {
                 $data = $request->input();
                 $request->session()->put('id', $userInfo->id);
@@ -41,9 +42,12 @@ class AuthController extends Controller
                 $request->session()->put('last_name', $userInfo->last_name);
                 $request->session()->put('email', $data['email']);
 
+
+
                 // return view('page.staff.routes.index');
                 return redirect()->route('staff-dashboard');
             } else {
+
                 return back()->with('fail', 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง');
             }
         }
@@ -513,14 +517,14 @@ class AuthController extends Controller
 
         $path = 0;
         $sumLocation = DB::table('locations')
-        ->join('attentions', 'locations.location_id', 'attentions.location_id')
-        ->join('staff', 'staff.id', 'attentions.staff_id')
-        ->join('booking_lists', 'locations.location_id', '=', 'booking_lists.location_id')
-        ->where('staff.id', '=', session('id'))
-        ->select('locations.location_name', 'attentions.staff_id', 'staff.email','locations.location_image',DB::raw('count(booking_lists.location_id) as total'))
-        ->groupBy('locations.location_name', 'attentions.staff_id','staff.email','locations.location_image')
-        ->orderBy('total', 'desc')
-        ->get();
+            ->join('attentions', 'locations.location_id', 'attentions.location_id')
+            ->join('staff', 'staff.id', 'attentions.staff_id')
+            ->join('booking_lists', 'locations.location_id', '=', 'booking_lists.location_id')
+            ->where('staff.id', '=', session('id'))
+            ->select('locations.location_name', 'attentions.staff_id', 'staff.email','locations.location_image',DB::raw('count(booking_lists.location_id) as total'))
+            ->groupBy('locations.location_name', 'attentions.staff_id','staff.email','locations.location_image')
+            ->orderBy('total', 'desc')
+            ->get();
 
 
         $arrsum = [];

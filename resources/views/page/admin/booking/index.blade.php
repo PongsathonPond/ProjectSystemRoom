@@ -37,6 +37,8 @@
                             <h6 class="fas fa-map-marker-alt"> &nbsp ที่ตั้ง: {{ $item->area }} </h6>
                             <br>
                             <h6 class="fas fa-user"> &nbsp ความจุ: {{ $item->accommodate_people }} คน </h6>
+                            <br>
+                            <h6 >อุปกรณ์ภายในห้อง: {{ $item->other }}  </h6>
 
 
                         </div>
@@ -46,7 +48,7 @@
 
 
                         <!-- Modal -->
-                        
+
                     </div>
                     <br>
                 </div>

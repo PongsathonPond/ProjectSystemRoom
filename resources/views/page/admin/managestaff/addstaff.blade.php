@@ -84,6 +84,7 @@
                                     <label>คำนำหน้า</label>
                                     <select class="form-control" type="select" id="exampleFormControlSelect1" name="title_name" >
                                         <option value="นาย">นาย</option>
+                                        <option value="นางสาว">นาง</option>
                                         <option value="นางสาว">นางสาว</option>
 
                                     </select>
@@ -93,34 +94,39 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ชื่อ</label>
-                                    <input type="text" name="first_name"  class="form-control"/>
+                                    <input type="text" name="first_name"  class="form-control" required/>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>นามสกุล</label>
-                                    <input type="text" name="last_name"  class="form-control"/>
+                                    <input type="text" name="last_name"  class="form-control" required/>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>เบอร์โทร</label>
-                                    <input type="text" name="phone_number"  class="form-control"/>
+                                    <input type="text" name="phone_number"  class="form-control" required/>
                                 </div>
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control"/>
+                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" required/>
                                 </div>
+                                @error('email')
+                                <div class="my-2">
+                                    <span class="text-danger my-2"> {{ $message }} </span>
+                                </div>
+                                @enderror
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" name="password" class="form-control"/>
+                                    <input type="password" name="password" class="form-control" required/>
                                     @error('password')
                                     <div class="my-2">
                                         <span class="text-danger my-2"> {{ $message }} </span>
@@ -203,12 +209,105 @@
                                                 data-bs-target="#exampleModalSignUp{{ $row->id }}">
 
                                         </button>
+                                        <button type="button" class="fas fa-cogs fa-lg btn btn-warning"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#exampleModaltest{{ $row->id }}">
+                                        </button>
 
                                         <a href="{{ url('/manage/delete/' . $row->id) }}"
                                            class="fas fa-trash-alt fa-lg btn btn-danger"
                                            onclick="return confirm('ลบหรือไม่ ?')"> </a>
 
                                         <!-- Modal -->
+
+                                        <div class="modal fade" id="exampleModaltest{{ $row->id }}"
+                                             tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-md"
+                                                 role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body p-0">
+                                                        <div class="card card-plain">
+                                                            <div class="card-header pb-0 text-left">
+                                                                <h3
+                                                                    class="font-weight-bolder text-primary text-gradient">
+                                                                    แก้ไขข้อมูลผู้ดูแลสถานที่</h3>
+
+                                                            </div>
+                                                            <div class="card-body pb-3">
+                                                                <form role="form text-left"
+                                                                      action="{{ url('/usermanage/updatestaff/' . $row->id) }}"
+                                                                      method="post">
+                                                                    @csrf
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label"
+                                                                                       for="first_name">ชื่อ
+                                                                                </label>
+                                                                                <input type="text"
+                                                                                       class="form-control"
+                                                                                       name="first_name"
+                                                                                       value="{{ $row->first_name }}">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label"
+                                                                                       for="last_name">นามสกุล</label>
+                                                                                <input type="text"
+                                                                                       class="form-control"
+                                                                                       name="last_name"
+                                                                                       value="{{ $row->last_name }}">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label"
+                                                                                       for="last_name">เบอร์โทร</label>
+                                                                                <input type="text"
+                                                                                       class="form-control"
+                                                                                       name="phone_number"
+                                                                                       value="{{ $row->phone_number	 }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-control-label"
+                                                                                       for="email">อีเมล์</label>
+                                                                                <input type="text"
+                                                                                       class="form-control"
+                                                                                       name="email"
+                                                                                       value="{{ $row->email }}">
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                    <br>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit"
+                                                                    class="btn bg-gradient-primary btn-lg btn-rounded mt-4 mb-0 w-80">
+                                                                บันทึก
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="modal fade" id="exampleModalSignUp{{ $row->id }}"
                                              tabindex="-1" role="dialog" aria-labelledby="exampleModalSignTitle"
                                              aria-hidden="true">

@@ -36,10 +36,9 @@ class LocaiotnManageSuperAdmin extends Controller
             'location_building' => 'required|max:255',
             'location_floor' => 'required|max:255',
             'location_image' => 'required|mimes:jpg,jpeg,png',
-            'accommodate_people' => 'required|max:255',
-            'cost_fullday' => 'required|max:255',
-            'cost_halfday' => 'required|max:255',
-
+            'accommodate_people' => 'required|max:255|integer',
+            'cost_fullday' => 'required|max:255|integer',
+            'cost_halfday' => 'required|max:255|integer',
             'area' => 'required|max:255',
             'location_type' => 'required|max:255',
 
@@ -48,11 +47,9 @@ class LocaiotnManageSuperAdmin extends Controller
                 'location_building.required' => "กรุณาป้อนอาคาร",
                 'location_floor.required' => "กรุณาป้อนชั้น",
                 'location_image.required' => "กรุณาเพิ่มรูปภาพ",
-                'accommodate_people.required' => "กรุณาป้อนความจุของห้อง",
-
-                'cost_fullday.required' => "กรุณาป้อนราคาเต็มวัน",
-                'cost_halfday.required' => "กรุณาป้อนราคาครึ่งวัน",
-
+                'accommodate_people.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
+                'cost_fullday.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
+                'cost_halfday.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
                 'area.required' => "กรุณาป้อนที่ตั้ง",
                 'location_type.required' => "กรุณาเพิ่มประเภท",
 
@@ -86,9 +83,8 @@ class LocaiotnManageSuperAdmin extends Controller
         $addcal->cost_halfday = $request->cost_halfday;
         $addcal->cost_fullday = $request->cost_fullday;
         $addcal->location_type = $request->location_type;
-
+        $addcal->other = $request->other;
         $addcal->location_image = $full_path;
-
         $addcal->created_at = Carbon::now();
 
         $addcal->save();
@@ -121,12 +117,16 @@ class LocaiotnManageSuperAdmin extends Controller
 
         $request->validate([
 
-            'location_name' => 'required|max:255',
-            // 'service_image'=>'mimes:jpg,jpeg,png'
+            'accommodate_people' => 'required|max:255|integer',
+            'cost_fullday' => 'required|max:255|integer',
+            'cost_halfday' => 'required|max:255|integer',
+
         ],
             [
-                'location_name.required' => "กรุณาป้อนชื่อสถานที่",
-                'location_name.max' => "ห้ามป้อนเกิน 255 ตัวอักษร",
+                'accommodate_people.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
+                'cost_fullday.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
+                'cost_halfday.integer' => "กรุณาป้อนตัวเลขเท่านั้น",
+
 
             ]
 
@@ -158,7 +158,6 @@ class LocaiotnManageSuperAdmin extends Controller
             return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
 
         } else {
-
             location::find($location_id)->update([
                 'location_name' => $request->location_name,
                 'location_building' => $request->location_building,
@@ -168,7 +167,7 @@ class LocaiotnManageSuperAdmin extends Controller
                 'cost_fullday' => $request->cost_fullday,
                 'area' => $request->area,
                 'location_type' => $request->location_type,
-
+                'other' => $request->other,
             ]);
             return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
 
@@ -176,4 +175,17 @@ class LocaiotnManageSuperAdmin extends Controller
 
     }
 
+
+
+    public function updatestatus(Request $request, $location_id)
+    {
+
+            location::find($location_id)->update([
+                'status' => $request->status,
+            ]);
+            return redirect()->back()->with('update', "อัพเดตข้อมูลเรียบร้อย");
+
+
+
+    }
 }

@@ -33,11 +33,11 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    
-    
+
+
         return view('indexpage');
-    
-    
+
+
 });
 
 //เปลี่ยนหน้า
@@ -125,6 +125,7 @@ Route::get('/admin_logout', [AuthAdminController::class, "logout"]);
 Route::get('/usermanage', [UserManageSuperAdmin::class, 'index'])->name('user-manage');
 Route::post('/usermanage/update/{id}', [UserManageSuperAdmin::class, 'update']);
 Route::post('/usermanage/updateadmin/{id}', [UserManageSuperAdmin::class, 'updateadmin']);
+Route::post('/usermanage/updatestaff/{id}', [UserManageSuperAdmin::class, 'updatestaff']);
 Route::get('/usermanage/delete/{id}', [UserManageSuperAdmin::class, 'delete']);
 Route::get('/usermanage/deleteadmin/{id}', [UserManageSuperAdmin::class, 'deleteAdmin']);
 
@@ -135,6 +136,10 @@ Route::get('/locationmanage/', [LocaiotnManageSuperAdmin::class, 'index'])->name
 Route::post('/locationmanage/add', [LocaiotnManageSuperAdmin::class, 'store'])->name('location-manage-add');
 Route::get('/locationmanage/delete/{id}', [LocaiotnManageSuperAdmin::class, 'delete']);
 Route::post('/locationmanage/update/{id}', [LocaiotnManageSuperAdmin::class, 'update']);
+Route::post('/locationmanage/updatest/{id}', [LocaiotnManageSuperAdmin::class, 'updatestatus']);
+
+
+
 
 //admin จัดการคำขอ
 Route::get('/request/superadmin', [RequestController::class, 'index'])->name('request-manage');

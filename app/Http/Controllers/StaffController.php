@@ -7,10 +7,10 @@ use App\Models\Attention;
 use App\Models\BookingList;
 use App\Models\Location;
 use App\Models\Staff;
-use Exception;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class StaffController extends Controller
 {
     public function index()
@@ -21,15 +21,12 @@ class StaffController extends Controller
         return view('page.admin.managestaff.addstaff', compact('staff', 'location', 'atten'));
     }
 
-    public function delete($id,Exception $exception)
+    public function delete($id)
     {
-        $delete = Staff::find($id)->delete();
-        if ($exception instanceof NotFoundHttpException) {
+            $delete = Staff::find($id)->delete();
 
             return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
 
-        }
-        return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
 
     }
 

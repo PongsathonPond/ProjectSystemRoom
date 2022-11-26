@@ -20,6 +20,8 @@ class Location extends Model
         'cost_fullday',
         'area',
         'location_type',
+        'status',
+        'other',
 
     ];
     protected $primaryKey = 'location_id';

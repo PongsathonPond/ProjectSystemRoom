@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Staff;
 use App\Models\User;
+use App\Models\Insiders;
 use Illuminate\Http\Request;
 
 class UserManageSuperAdmin extends Controller
@@ -12,13 +14,14 @@ class UserManageSuperAdmin extends Controller
     {
         $users = User::all();
         $admin = Admin::all();
-        return view('page.admin.usermanage.index', compact('users', 'admin'));
+        $insider = Insiders::all();
+        return view('page.admin.usermanage.index', compact('users', 'admin','insider'));
     }
 
     public function update(Request $request, $id)
     {
 
-        dd($request);
+
         $request->validate([
 
             'title_name' => 'required',
@@ -58,7 +61,7 @@ class UserManageSuperAdmin extends Controller
 
     public function updateadmin(Request $request, $id)
     {
-        
+
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -71,12 +74,40 @@ class UserManageSuperAdmin extends Controller
             ]
         );
 
-        
-        
+
+
         Admin::find($id)->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+        ]);
+
+
+        return redirect()->back()->with('success', "อัพเดตข้อมูลเรียบร้อย");
+    }
+
+    public function updatestaff(Request $request, $id)
+    {
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+        ],
+            [
+                'first_name.required' => "กรุณาป้อนชื่อ",
+                'last_name.required' => "กรุณาป้อนนามสกุล",
+
+            ]
+        );
+
+
+
+        Staff::find($id)->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number	,
         ]);
 
 

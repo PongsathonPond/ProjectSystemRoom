@@ -28,9 +28,15 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+        Schema::create('locationstatus', function (Blueprint $table) {
+            $table->id();
+            $table->string('location_status');
+            $table->timestamps();
+        });
 
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('status')->default(0);
             $table->string('location_name');
             $table->string('location_building');
             $table->string('location_floor');
@@ -40,6 +46,8 @@ return new class extends Migration
             $table->integer('cost_fullday');
             $table->string('area');
             $table->string('location_type');
+            $table->string('other')->nullable();
+            $table->foreign('status')->references('id')->on('locationstatus');
             $table->timestamps();
         });
 
@@ -73,6 +81,8 @@ return new class extends Migration
             $table->string('bookingstatus_name');
             $table->timestamps();
         });
+
+
 
         Schema::create('coststatus', function (Blueprint $table) {
             $table->id();
