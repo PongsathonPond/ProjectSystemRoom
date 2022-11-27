@@ -36,9 +36,9 @@ class LocaiotnManageSuperAdmin extends Controller
             'location_building' => 'required|max:255',
             'location_floor' => 'required|max:255',
             'location_image' => 'required|mimes:jpg,jpeg,png',
-            'accommodate_people' => 'required|max:255|integer',
-            'cost_fullday' => 'required|max:255|integer',
-            'cost_halfday' => 'required|max:255|integer',
+            'accommodate_people' => 'required|integer',
+            'cost_fullday' => 'required|integer',
+            'cost_halfday' => 'required|integer',
             'area' => 'required|max:255',
             'location_type' => 'required|max:255',
 
@@ -117,9 +117,9 @@ class LocaiotnManageSuperAdmin extends Controller
 
         $request->validate([
 
-            'accommodate_people' => 'required|max:255|integer',
-            'cost_fullday' => 'required|max:255|integer',
-            'cost_halfday' => 'required|max:255|integer',
+            'accommodate_people' => 'required|integer',
+            'cost_fullday' => 'required|integer',
+            'cost_halfday' => 'required|integer',
 
         ],
             [

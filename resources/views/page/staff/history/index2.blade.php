@@ -44,8 +44,8 @@
                                         ชื่อรายการจอง</th>
                                     <th class="font-weight-bolder text-center text-xs" data-sort="name">
                                         ห้อง</th>
-                                    <th class="font-weight-bolder text-center text-xs" data-sort="name">
-                                        ชื่อผู้จอง</th>
+{{--                                    <th class="font-weight-bolder text-center text-xs" data-sort="name">--}}
+{{--                                        ชื่อผู้จอง</th>--}}
 
                                     <th class="font-weight-bolder text-center text-xs" data-sort="name">
                                         เวลาเริ่มต้น-สิ้นสุด</th>
@@ -72,33 +72,33 @@
 
 
                                             <td class="text-center align-middle">
-                                                @foreach ($item->booktolocation as $item1)
-                                                    {{ $item1->location_name }}
-                                                @endforeach
 
-                                            </td>
-
-                                            <td class="text-center align-middle">
-                                                @foreach ($item->booktouser as $item1)
-                                                    {{ $item1->first_name }}
-                                                    {{ $item1->last_name }}
-                                                @endforeach
-                                                @foreach ($item->booktoadmin as $item1)
-                                                    {{ $item1->first_name }}
-                                                    {{ $item1->last_name }}
-                                                @endforeach
-                                                @foreach ($item->booktoinsider as $item1)
-                                                    {{ $item1->first_name }}
-                                                    {{ $item1->last_name }}
-                                                @endforeach
-                                                @foreach ($item->booktostaff as $item1)
-                                                    {{ $item1->first_name }}
-                                                    {{ $item1->last_name }}
-                                                @endforeach
-
+                                                    {{ $item->location_name }}
 
 
                                             </td>
+
+{{--                                            <td class="text-center align-middle">--}}
+{{--                                                @foreach ($item->booktouser as $item1)--}}
+{{--                                                    {{ $item1->first_name }}--}}
+{{--                                                    {{ $item1->last_name }}--}}
+{{--                                                @endforeach--}}
+{{--                                                @foreach ($item->booktoadmin as $item1)--}}
+{{--                                                    {{ $item1->first_name }}--}}
+{{--                                                    {{ $item1->last_name }}--}}
+{{--                                                @endforeach--}}
+{{--                                                @foreach ($item->booktoinsider as $item1)--}}
+{{--                                                    {{ $item1->first_name }}--}}
+{{--                                                    {{ $item1->last_name }}--}}
+{{--                                                @endforeach--}}
+{{--                                                @foreach ($item->booktostaff as $item1)--}}
+{{--                                                    {{ $item1->first_name }}--}}
+{{--                                                    {{ $item1->last_name }}--}}
+{{--                                                @endforeach--}}
+
+
+
+{{--                                            </td>--}}
 
                                             <td class="text-center align-middle">
 

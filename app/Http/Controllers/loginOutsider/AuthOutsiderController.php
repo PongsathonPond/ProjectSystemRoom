@@ -42,7 +42,11 @@ class AuthOutsiderController extends Controller
 
                 $User = new Insiders;
                 $User->email = $obj->mail;
-                $User->student_id = $obj->studentId;
+                if(empty($obj->studentId)){
+                    $User->student_id = "null";
+                }else{
+                    $User->student_id = $obj->studentId;
+                }
                 $User->title_name = $obj->prename;
                 $User->first_name = $obj->firstNameThai;
                 $User->last_name = $obj->lastNameThai;
@@ -54,9 +58,9 @@ class AuthOutsiderController extends Controller
                 Session::put('title_name', $userInfo->title_name);
                 Session::put('first_name', $userInfo->first_name);
                 Session::put('last_name', $userInfo->last_name);
-                
+
                 return view('page.user.routes.index', compact('booking'));
-               
+
             }
         }
 

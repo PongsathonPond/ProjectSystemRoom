@@ -65,8 +65,27 @@ class HistoryAdmin extends Controller
     public function index4(Request $request)
     {
 
-        $dataOld = BookingList::Where('status', '0')->orWhere('status', '2')->paginate(10);
-        $dataNew = BookingList::Where('status', '1')->paginate(10);
+
+                $dataOld = DB::table('locations')
+
+                     ->join('attentions', 'locations.location_id', 'attentions.location_id')
+                     ->join('staff', 'staff.id', 'attentions.staff_id')
+                    ->join('booking_lists', 'locations.location_id', '=', 'booking_lists.location_id')
+                     ->where('staff.id', '=', session('id'))->where('status','!=',1)
+                     ->select('locations.*', 'attentions.*', 'staff.email','booking_lists.*')
+                     ->paginate(1000);
+
+//        $dataOld = BookingList::Where('status', '0')->orWhere('status', '2')->paginate(10);
+//        $dataNew = BookingList::Where('status', '1')->paginate(10);
+
+        $dataNew = DB::table('locations')
+
+            ->join('attentions', 'locations.location_id', 'attentions.location_id')
+            ->join('staff', 'staff.id', 'attentions.staff_id')
+            ->join('booking_lists', 'locations.location_id', '=', 'booking_lists.location_id')
+            ->where('staff.id', '=', session('id'))->where('status','=',1)
+            ->select('locations.*', 'attentions.*', 'staff.email','booking_lists.*')
+            ->paginate(1000);
         return view('page.staff.history.index2', compact('dataOld', 'dataNew'));
     }
 

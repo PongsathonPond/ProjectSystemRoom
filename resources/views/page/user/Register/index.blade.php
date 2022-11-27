@@ -115,6 +115,7 @@
                                 <label for="exampleFormControlInput1">คำนำหน้า</label>
                                 <select class="form-control" type="select" id="exampleFormControlSelect1" name="title_name" >
                                     <option value="นาย">นาย</option>
+                                    <option value="นาง">นาง</option>
                                     <option value="นางสาว">นางสาว</option>
 
                                 </select>
@@ -177,11 +178,7 @@
         </div>
         <div class="row">
             <div class="col-8 mx-auto text-center mt-1">
-                <p class="mb-0 text-secondary">
-                    Copyright © <script>
-                        document.write(new Date().getFullYear())
-                    </script> Soft by Creative Tim.
-                </p>
+
             </div>
         </div>
     </div>

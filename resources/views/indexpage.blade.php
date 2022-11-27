@@ -1,17 +1,27 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link href="../css/csslogin.css" rel="stylesheet" />
-    <title>Login</title>
+
+    <link rel="stylesheet" href="login/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="login/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="login/css/style.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <title>Login </title>
 </head>
-
 <body>
 
 @if (session('fail'))
@@ -25,132 +35,97 @@
         })
     </script>
 @endif
+@php
 
-    
-    @php
-
-        session_start();
-        if (!empty($_SESSION['_login_info'])) {
-            $test = json_encode($_SESSION['_login_info']);
-            $obj = json_decode($test);
-            if (!empty($obj)) {
-                header('Location: https://lrm.rmuti.ac.th/indexuser');
-                exit();
-            }
+    session_start();
+    if (!empty($_SESSION['_login_info'])) {
+        $test = json_encode($_SESSION['_login_info']);
+        $obj = json_decode($test);
+        if (!empty($obj)) {
+            header('Location: https://lrm.rmuti.ac.th/indexuser');
+            exit();
         }
-
-     
-
-        Session::forget('id');
-        Session::forget('email');
-        Session::forget('student_id');
-        Session::forget('title_name');
-        Session::forget('first_name');
-        Session::forget('last_name');
-     
-    @endphp
-
-    <div class="container">
-
-        <div class="forms-container">
-            <div class="signin-signup">
-
-                <form method="POST" class="sign-in-form" action="{{ route('login_outsider') }}">
-                    @csrf
-
-                    <h2 class="title">Login</h2>
-                    @if ($errors->has('email'))
-                        <strong style="color: red">อีเมล์หรือรหัสผ่านไม่ถูกต้อง</strong>
-                    @endif
-
-                    <div class="input-field">
-
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Email" type="email" name="email" :value="old('email')"
-                            required autofocus />
+    }
 
 
+
+    Session::forget('id');
+    Session::forget('email');
+    Session::forget('student_id');
+    Session::forget('title_name');
+    Session::forget('first_name');
+    Session::forget('last_name');
+
+@endphp
+<div class="d-md-flex half">
+    <div class="bg" style="background-image: url('imglogin/bg_1.jpg');">
+
+    </div>
+    <div class="contents">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-md-12">
+
+                    <div class="form-block mx-auto">
+
+                        <div class="text-center mb-5">
+                            <h3 class="text-uppercase">เข้าสู่ระบบ <strong>บุคคลภายนอก</strong></h3>
+                        </div>
+                        <form method="POST" class="sign-in-form" action="{{ route('login_outsider') }}">
+                            @csrf
+                            <div class="form-group first">
+                                <label for="username">Email</label>
+                                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="email">
+                            </div>
+                            <div class="form-group last mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Your Password" id="password"  name="password">
+                            </div>
+
+                            <div class="d-sm-flex mb-5 align-items-center">
+                                <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                                    <input type="checkbox" checked="checked"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <span class="ml-auto"><a href="{{ route('register_outsider') }}" class="forgot-pass">สมัครสมาชิก</a></span>
+                            </div>
+
+                            <input type="submit" value="เข้าสู่ระบบ" class="btn btn-block py-2 btn-primary">
+
+                            <span class="text-center my-3 d-block">หรือ</span>
+
+
+                            <div class="">
+                                @if(session('_previous.url')=="https://lrm.rmuti.ac.th")
+                                    <a href="sso?sso" class="btn btn-block py-2 btn-facebook">
+                                        <span class="icon-facebook mr-3"></span> เข้าสู่ระบบด้วยบัญชีมหาวิทยาลัย
+                                    </a>
+                                @else
+
+                                @endif
+                                    <a href="sso?sso" class="btn btn-block py-2 btn-facebook">
+                                        <span class="icon-facebook mr-3"></span> เข้าสู่ระบบด้วยบัญชีมหาวิทยาลัย
+                                    </a>
+                                <a href="{{ route('adminlogin') }}" class="btn btn-block py-2 btn-google"><span class="icon-google mr-3"></span> สำหรับผู้ดูแลระบบ</a>
+                                <a href="{{ route('stafflogin') }}" class="btn btn-block py-2 btn-google"><span class="icon-google mr-3"></span> สำหรับผู้ดูแลสถานที่</a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="password" required autocomplete="current-password"
-                            placeholder="Password" />
-
-
-                    </div>
-                    <button type="submit" type="submit" class="btn solid">Login</button>
-
-                    <p class="social-text">ลงชื่อเข้าใช้ด้วยบัญชีมหาวิทยาลัย</p>
-                </form>
-
-
-
-                <div class="social-media">
-
-                    {{-- @if(session('_previous.url')=="https://lrm.rmuti.ac.th")
-                    <a href="sso?sso" class="social-icon" data-toggle="tooltip" title="สำหรับนักศึกษาและบุคลากร">
-                        <i class="fas fa-sign-in-alt"></i>
-                    </a>
-                    @else
-
-                    @endif --}}
-                    <a href="sso?sso" class="social-icon" data-toggle="tooltip" title="สำหรับนักศึกษาและบุคลากร">
-                        <i class="fas fa-sign-in-alt"></i>
-                    </a>
-
-
-                    <a href="{{ route('stafflogin') }}" class="social-icon" data-toggle="tooltip"
-                        title="สำหรับผู้ดูแลสถานที่">
-                        <i class="fas fa-users"></i>
-                    </a>
-
-                    <a href="{{ route('adminlogin') }}" class="social-icon" data-toggle="tooltip"
-                        title="สำหรับผู้ดูแลระบบ">
-                        <i class="fas fa-user-cog"></i>
-                    </a>
                 </div>
-                </form>
-
-            </div>
-        </div>
-
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>สมัครสมาชิกใหม่</h3>
-                    <p>
-
-
-                        สำหรับบุคคุลภายนอกที่ต้องการขอใช้สถานที่ภายใน มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน
-                    </p>
-                    <a href="{{ route('register_outsider') }}">
-                        <button class="btn transparent" id="sign-up-btn">
-                            Register
-                        </button>
-                    </a>
-                </div>
-
-                <img src="{{ asset('imglogin/location2.svg') }}" class="image" alt="tag">
-            </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>ลงชื่อเข้าใช้</h3>
-                    <p>
-                        สำหรับหน่วยงานภายนอกที่สมัครสมาชิกแล้ว
-                    </p>
-                    <button class="btn transparent" id="sign-in-btn">
-                        Register
-                    </button>
-                </div>
-
-                <img src="{{ asset('imglogin/user.svg') }}" class="image" alt="tag">
             </div>
         </div>
     </div>
 
 
-    <script src="../js/jslogin.js"></script>
+</div>
 
+
+
+<script src="login/js/jquery-3.3.1.min.js"></script>
+<script src="login/js/popper.min.js"></script>
+<script src="login/js/bootstrap.min.js"></script>
+<script src="login/js/main.js"></script>
 </body>
-
 </html>
